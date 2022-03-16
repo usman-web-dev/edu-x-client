@@ -28,7 +28,7 @@ const config: NuxtConfig = {
 
   css: [],
 
-  plugins: [],
+  plugins: ['~/plugins/vee-validate'],
 
   components: [
     { path: '@/components/', extensions: ['vue'] },
@@ -64,7 +64,9 @@ const config: NuxtConfig = {
     }
   },
 
-  build: {}
+  build: {
+    transpile: ['vee-validate/dist/rules']
+  }
 };
 
 export default config;
