@@ -37,7 +37,11 @@ const config: NuxtConfig = {
 
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
 
-  modules: [],
+  modules: ['@nuxtjs/strapi'],
+
+  strapi: {
+    url: 'http://localhost:1337/api'
+  },
 
   vuetify: {
     treeShake: true,
