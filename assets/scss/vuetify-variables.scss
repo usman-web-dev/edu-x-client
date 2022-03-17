@@ -1,2 +1,9 @@
+@import './partials/_colors';
+
 $body-font-family: 'Poppins', sans-serif;
 $border-radius-root: 10px;
+$btn-border-radius: 8px;
+
+$material-light: (
+  'background': $gray
+);
