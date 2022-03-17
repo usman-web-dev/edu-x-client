@@ -1,0 +1,25 @@
+<template>
+  <validation-provider :rules="rules" v-slot="{ errors }" :vid="vid" slim>
+    <v-text-field
+      ref="vTextFieldRef"
+      :error-messages="errors"
+      v-bind="$attrs"
+      v-on="$listeners"
+      :value="value"
+      @input="$emit('input', $event)"
+      outlined
+      @blur="$emit('input', trimValue())"
+      :hide-details="$attrs['hide-details'] != undefined ? $attrs['hide-details'] : 'auto'"
+      dense
+      :clearable="!rules.includes('required')"
+      :type="Type"
+    >
+      <template #append v-if="!$slots.append && $attrs.type === 'password'">
+        <v-icon @click="ViewPassword = !ViewPassword">mdi-eye{{ ViewPassword ? '-off' : '' }}-outline</v-icon>
+      </template>
+      <slot v-for="slot in Object.keys($slots)" :name="slot" :slot="slot" />
+    </v-text-field>
+  </validation-provider>
+</template>
+
+<script lang="ts" src="./index.ts" />
