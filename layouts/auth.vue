@@ -13,3 +13,9 @@
     </v-main>
   </v-app>
 </template>
+
+<script>
+export default {
+  middleware: 'nonAuth'
+};
+</script>

@@ -35,10 +35,6 @@ const config: NuxtConfig = {
     { path: '@/components/shared/', extensions: ['vue'] }
   ],
 
-  router: {
-    middleware: 'auth'
-  },
-
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
 
   modules: ['@nuxtjs/strapi'],

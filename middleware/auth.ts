@@ -1,11 +1,9 @@
 import { Middleware } from '@nuxt/types';
 
 const auth: Middleware = ({ $strapi, redirect }) => {
-  if ($strapi.user) {
-    return redirect('/dashboard');
+  if (!$strapi.user) {
+    redirect('/');
   }
-
-  return redirect('/');
 };
 
 export default auth;

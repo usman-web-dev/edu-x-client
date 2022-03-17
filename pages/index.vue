@@ -20,7 +20,7 @@ export default {
     async login() {
       await this.$strapi.login({ identifier: 'usman.dev03@gmail.com', password: 'Usman@0303' });
 
-      this.$router.replace('/dashboard');
+      this.$router.push('/dashboard');
     }
   }
 };
