@@ -26,7 +26,7 @@ const config: NuxtConfig = {
     ]
   },
 
-  css: [],
+  css: ['@/assets/scss/index.scss'],
 
   plugins: ['~/plugins/vee-validate', '~/plugins/api'],
 
@@ -45,7 +45,7 @@ const config: NuxtConfig = {
 
   vuetify: {
     treeShake: true,
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ['~/assets/scss/vuetify-variables.scss'],
     theme: {
       themes: {
         light: {
