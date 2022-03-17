@@ -7,10 +7,7 @@
       v-on="$listeners"
       :value="value"
       @input="$emit('input', $event)"
-      outlined
       @blur="$emit('input', trimValue())"
-      :hide-details="$attrs['hide-details'] != undefined ? $attrs['hide-details'] : 'auto'"
-      dense
       :clearable="!rules.includes('required')"
       :type="Type"
     >
