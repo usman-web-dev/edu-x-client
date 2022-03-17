@@ -1,10 +1,5 @@
 <template>
-  <v-btn
-    :color="color"
-    v-bind="$attrs"
-    v-on="$listeners"
-    nuxt
-  >
+  <v-btn :color="color" v-bind="$attrs" v-on="$listeners" nuxt large>
     <slot />
   </v-btn>
 </template>
