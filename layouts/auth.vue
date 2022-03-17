@@ -4,11 +4,9 @@
       <v-container class="fill-height">
         <v-row justify="center" align="center">
           <v-col cols="12" sm="8" md="6" lg="4">
-            <v-img src="/svgs/edu-x.svg" class="mx-auto" max-width="200px" />
+            <v-img src="/svgs/edu-x.svg" class="mx-auto mb-5" max-width="200px" />
 
-            <v-card class="pa-10 mt-5 shadow">
-              <nuxt />
-            </v-card>
+            <nuxt />
           </v-col>
         </v-row>
       </v-container>

@@ -54,7 +54,9 @@ const config: NuxtConfig = {
           secondary: '#1f2937',
           warning: '#f97316',
           error: '#dc2626',
-          success: '#16a34a'
+          success: '#16a34a',
+          gray: '#f3f4f6',
+          'light-gray': '#f9fafb'
         }
       }
     },
