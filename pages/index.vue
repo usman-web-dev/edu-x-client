@@ -4,8 +4,8 @@
       <h1 class="secondary--text">Login</h1>
     </template>
 
-    <base-text-field label="Email" type="email" />
-    <base-text-field label="Password" type="password" />
+    <base-text-field label="Email" type="email" v-model="loginData.email" />
+    <base-text-field label="Password" type="password" v-model="loginData.password" />
 
     <template #actions>
       <base-btn block @click="login">Login</base-btn>
@@ -13,15 +13,4 @@
   </base-card>
 </template>
 
-<script>
-export default {
-  layout: 'auth',
-  methods: {
-    async login() {
-      await this.$strapi.login({ identifier: 'usman.dev03@gmail.com', password: 'Usman@0303' });
-
-      this.$router.push('/dashboard');
-    }
-  }
-};
-</script>
+<script lang="ts" src="./index.ts" />

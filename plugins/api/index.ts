@@ -1,7 +1,10 @@
 import { Plugin } from '@nuxt/types';
 import { BaseApi } from '~/api';
+import { auth } from '~/api/auth';
 
-const apis = {};
+const apis = {
+  auth
+};
 declare module 'vue/types/vue' {
   interface Vue {
     $api: typeof apis;
