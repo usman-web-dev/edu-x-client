@@ -11,7 +11,7 @@ export default {
     async logout() {
       await this.$strapi.logout();
 
-      this.$router.replace('/');
+      this.$router.push('/');
     }
   }
 };
