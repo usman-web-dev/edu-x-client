@@ -1,8 +1,5 @@
-import { extend, ValidationProvider } from 'vee-validate';
+import { extend } from 'vee-validate';
 import { confirmed, email, max, min, required } from 'vee-validate/dist/rules';
-import Vue from 'vue';
-
-Vue.component('ValidationProvider', ValidationProvider);
 
 extend('required', {
   ...required,
