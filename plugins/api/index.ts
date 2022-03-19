@@ -1,22 +1,26 @@
 import { Plugin } from '@nuxt/types';
 import { BaseApi } from '~/api';
 import { auth } from '~/api/auth';
+import { BaseModule } from '~/store';
 
-const apis = {
+const api = {
   auth
 };
+
+export type Api = typeof api;
+
 declare module 'vue/types/vue' {
   interface Vue {
-    $api: typeof apis;
+    $api: Api;
   }
 }
 
 declare module '@nuxt/types' {
   interface NuxtAppOptions {
-    $api: typeof apis;
+    $api: Api;
   }
   interface Context {
-    $api: typeof apis;
+    $api: Api;
   }
 }
 
@@ -29,7 +33,11 @@ const axios: Plugin = (ctx, inject) => {
   // Inject custom APIs.
   BaseApi.prototype.$strapi = ctx.$strapi;
   BaseApi.prototype.$context = ctx;
-  inject('api', apis);
+
+  BaseModule.prototype.$api = api;
+  BaseModule.prototype.$context = ctx;
+
+  inject('api', api);
 };
 
 export default axios;
