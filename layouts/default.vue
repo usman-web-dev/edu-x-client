@@ -1,12 +1,11 @@
 <template>
   <v-app>
     <alert />
+    <core-drawer />
+    <core-app-bar />
 
     <v-main>
       <v-container class="fill-height">
-        <base-tooltip #default="{ on }" transition="slide-x-reverse-transition" msg="ahaha">
-          <base-btn v-on="on">ok</base-btn>
-        </base-tooltip>
         <nuxt />
       </v-container>
     </v-main>
