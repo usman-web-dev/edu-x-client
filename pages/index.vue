@@ -9,7 +9,7 @@
       <base-text-field label="Password" type="password" v-model="loginData.password" rules="required|min:8|max:36" />
 
       <template #actions>
-        <base-btn block :disabled="invalid" type="submit">Login</base-btn>
+        <base-btn block :disabled="invalid" type="submit" large>Login</base-btn>
       </template>
     </base-card>
   </base-form>

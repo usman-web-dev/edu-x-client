@@ -24,9 +24,19 @@ declare module '@nuxt/types' {
 }
 
 const plugin: Plugin = (ctx, inject) => {
-  // Customize the error message came from API.
-  ctx.$strapi.hook('error', error => {
-    throw new Error(error || 'Server Error');
+  ctx.$strapi.hook('error', e => {
+    let error: string;
+    if (Array.isArray(e.message)) {
+      error = e.message[0].messages[0].message;
+    } else if (typeof e.message === 'object' && e.message !== null) {
+      error = e.message.message;
+    } else if (e.message) {
+      error = e.message;
+    } else {
+      error = e.original?.error?.message?.replace?.('identifier', 'email') ?? 'Server Error';
+    }
+
+    ctx.$alert.show(error, 'error');
   });
 
   // Inject custom APIs.

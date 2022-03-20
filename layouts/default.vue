@@ -1,5 +1,7 @@
 <template>
   <v-app>
+    <alert />
+
     <v-main>
       <v-container class="fill-height">
         <nuxt />
