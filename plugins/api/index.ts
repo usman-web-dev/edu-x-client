@@ -1,7 +1,6 @@
 import { Plugin } from '@nuxt/types';
 import { BaseApi } from '~/api';
 import { auth } from '~/api/auth';
-import { BaseModule } from '~/store';
 
 const api = {
   auth
@@ -24,7 +23,7 @@ declare module '@nuxt/types' {
   }
 }
 
-const axios: Plugin = (ctx, inject) => {
+const plugin: Plugin = (ctx, inject) => {
   // Customize the error message came from API.
   ctx.$strapi.hook('error', error => {
     throw new Error(error || 'Server Error');
@@ -34,10 +33,7 @@ const axios: Plugin = (ctx, inject) => {
   BaseApi.prototype.$strapi = ctx.$strapi;
   BaseApi.prototype.$context = ctx;
 
-  BaseModule.prototype.$api = api;
-  BaseModule.prototype.$context = ctx;
-
   inject('api', api);
 };
 
-export default axios;
+export default plugin;
