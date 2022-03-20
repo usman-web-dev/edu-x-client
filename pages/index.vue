@@ -1,18 +1,12 @@
 <template>
-  <base-form #default="{ invalid }" @submit="login">
-    <base-card title-in="center">
-      <template #title>
-        <h1 class="secondary--text">Login</h1>
-      </template>
-
-      <base-text-field label="Email" type="email" v-model="loginData.email" rules="required|email" autofocus />
-      <base-text-field label="Password" type="password" v-model="loginData.password" rules="required|min:8|max:36" />
-
-      <template #actions>
-        <base-btn block :disabled="invalid" type="submit" large>Login</base-btn>
-      </template>
-    </base-card>
-  </base-form>
+  <div class="d-flex justify-center flex-column align-center width-100">
+    <h1 class="text-h1">Landing Page</h1>
+    <base-btn to="/login">Login</base-btn>
+  </div>
 </template>
 
-<script lang="ts" src="./index.ts" />
+<script>
+export default {
+  layout: 'guest'
+};
+</script>
