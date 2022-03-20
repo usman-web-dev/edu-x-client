@@ -1,12 +1,12 @@
 <template>
-  <v-card class="shadow">
-    <v-card-title v-if="$slots.title" class="pa-8 pb-0" :class="`justify-${titleIn}`">
+  <v-card class="shadow rounded-xl pa-5">
+    <v-card-title v-if="$slots.title" :class="`justify-${titleIn}`">
       <slot name="title" />
     </v-card-title>
-    <v-card-text class="pa-8">
+    <v-card-text>
       <slot />
     </v-card-text>
-    <v-card-actions v-if="$slots.actions" class="light-gray px-8 py-5">
+    <v-card-actions v-if="$slots.actions">
       <slot name="actions" />
     </v-card-actions>
   </v-card>
