@@ -11,9 +11,7 @@ export default class LoginView extends Vue {
     this.$nuxt.$loading.start();
 
     try {
-      const { email, password } = this.loginData;
-
-      await this.$api.auth.login({ email, password });
+      await this.$api.auth.login(this.loginData);
 
       this.$router.push('/dashboard');
     } catch {

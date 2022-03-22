@@ -40,7 +40,10 @@ const config: NuxtConfig = {
   modules: ['@nuxtjs/strapi'],
 
   strapi: {
-    url: 'http://localhost:1337/api'
+    url: 'http://localhost:1337/api',
+    cookie: {
+      path: '/'
+    }
   },
 
   vuetify: {

@@ -13,7 +13,9 @@
               @click="$router.push('/')"
             />
 
-            <nuxt />
+            <v-slide-y-transition hide-on-leave>
+              <nuxt />
+            </v-slide-y-transition>
           </v-col>
         </v-row>
       </v-container>
