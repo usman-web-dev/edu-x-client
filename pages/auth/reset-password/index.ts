@@ -2,7 +2,19 @@ import { Component, Vue } from 'nuxt-property-decorator';
 import { ResetPasswordModel } from '~/api/auth';
 
 @Component({
-  layout: 'auth'
+  layout: 'auth',
+  middleware: ({
+    redirect,
+    route: {
+      query: { code }
+    },
+    $alert
+  }) => {
+    if (!code) {
+      $alert.show(`Please use the link from your email to reset the password.`, 'error');
+      redirect('/auth/login');
+    }
+  }
 })
 export default class ResetPasswordView extends Vue {
   resetPasswordData = new ResetPasswordModel();
