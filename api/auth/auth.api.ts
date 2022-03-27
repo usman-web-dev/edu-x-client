@@ -12,6 +12,12 @@ class AuthApi extends BaseApi {
   resetPassword(data: ResetPasswordModel) {
     return this.$strapi.resetPassword({ ...data });
   }
+  async logout() {
+    console.log('ahah');
+    await this.$strapi.logout();
+
+    this.$context.app.router?.push('/auth/login');
+  }
 }
 
 export const auth = new AuthApi();
