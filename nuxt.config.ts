@@ -28,7 +28,7 @@ const config: NuxtConfig = {
 
   css: ['@/assets/scss/index.scss'],
 
-  plugins: ['~/plugins/vee-validate', '~/plugins/api', '~/plugins/alert'],
+  plugins: ['~/plugins/vee-validate', '~/plugins/api', '~/plugins/alert', '~/plugins/confirm'],
 
   components: [
     { path: '@/components/', extensions: ['vue'] },

@@ -22,3 +22,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.v-card {
+  word-wrap: unset !important;
+
+  &__title {
+    word-break: unset !important;
+  }
+}
+</style>
