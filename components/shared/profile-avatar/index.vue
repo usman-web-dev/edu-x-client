@@ -1,7 +1,15 @@
 <template>
   <v-avatar :size="36" color="primary" class="white--text no-select">
-    <span>{{ Initials }}</span>
+    <span>{{ initials }}</span>
   </v-avatar>
 </template>
 
-<script lang="ts" src="./index.ts" />
+<script>
+export default {
+  computed: {
+    initials() {
+      return this.$strapi.user?.username[0].toUpperCase();
+    }
+  }
+};
+</script>

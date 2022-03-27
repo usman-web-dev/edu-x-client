@@ -1,8 +1,9 @@
 <template>
   <v-app>
-    <alert />
-    <core-drawer />
-    <core-app-bar />
+    <lazy-alert />
+    <lazy-core-drawer />
+    <lazy-core-app-bar />
+    <lazy-confirm />
 
     <v-main>
       <v-container class="fill-height">
