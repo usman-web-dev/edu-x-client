@@ -1,5 +1,6 @@
 <template>
-  <base-table
+  <listing
+    subtitle="Some info which you need to process"
     :headers="[
       { id: 'myid', title: 'Hahah' },
       { id: 'myid1', title: 'Hahah 1' },
