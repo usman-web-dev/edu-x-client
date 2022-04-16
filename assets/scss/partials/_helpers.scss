@@ -32,7 +32,9 @@
   user-select: none;
 }
 
-// Width
-.width-100 {
-  width: 100% !important;
+// Width & Height
+@each $s in width, height {
+  .#{$s}-100 {
+    #{$s}: 100% !important;
+  }
 }
