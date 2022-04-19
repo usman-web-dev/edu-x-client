@@ -1,6 +1,6 @@
 import { instanceToPlain } from 'class-transformer';
 
-export class BaseEntity {
+export class BaseModel {
   toJSON() {
     return instanceToPlain(this);
   }

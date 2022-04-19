@@ -31,3 +31,14 @@ a {
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }
+
+.base-pagination {
+  button {
+    box-shadow: $box-shadow !important;
+
+    &:disabled {
+      box-shadow: none !important;
+      background: gainsboro !important;
+    }
+  }
+}

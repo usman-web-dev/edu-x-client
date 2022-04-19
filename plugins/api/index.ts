@@ -1,6 +1,6 @@
 import { Plugin } from '@nuxt/types';
-import { BaseApi } from '~/api';
-import { auth } from '~/api/auth';
+import { auth, BaseApi } from '~/api';
+import { BaseService } from '~/services';
 
 const api = {
   auth
@@ -8,19 +8,17 @@ const api = {
 
 export type Api = typeof api;
 
+interface Props {
+  $api: Api;
+}
+
 declare module 'vue/types/vue' {
-  interface Vue {
-    $api: Api;
-  }
+  interface Vue extends Props {}
 }
 
 declare module '@nuxt/types' {
-  interface NuxtAppOptions {
-    $api: Api;
-  }
-  interface Context {
-    $api: Api;
-  }
+  interface NuxtAppOptions extends Props {}
+  interface Context extends Props {}
 }
 
 const plugin: Plugin = (ctx, inject) => {
@@ -42,6 +40,7 @@ const plugin: Plugin = (ctx, inject) => {
   // Inject custom APIs.
   BaseApi.prototype.$strapi = ctx.$strapi;
   BaseApi.prototype.$context = ctx;
+  BaseService.prototype.$context = ctx;
 
   inject('api', api);
 };

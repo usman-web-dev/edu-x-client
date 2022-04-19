@@ -1,10 +1,13 @@
 <template>
   <v-app-bar color="transparent" app flat>
-    <v-app-bar-nav-icon color="primary" @click="drawerSrv.mode = !drawerSrv.mode" class="d-none d-md-block" />
+    <v-app-bar-nav-icon color="primary" @click="drawerSrv.mode = !drawerSrv.mode" />
     <div class="d-flex justify-end width-100">
       <base-menu>
         <template #activator>
-          <profile-avatar />
+          <div class="d-flex align-center">
+            <span class="mr-2 secondary--text">{{ $helpers.titleize($strapi.user && $strapi.user.username) }}</span>
+            <profile-avatar />
+          </div>
         </template>
 
         <v-list-item
