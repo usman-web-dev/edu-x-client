@@ -15,6 +15,12 @@ export default class BaseTable extends Vue {
   })
   private readonly data!: Array<AnyObject>;
 
+  @Prop({
+    default: false,
+    type: Boolean
+  })
+  private readonly loading!: boolean;
+
   get defaultHeaderStyle() {
     return 'text-md-subtitle-1 text-body-2 font-weight-medium secondary--text';
   }

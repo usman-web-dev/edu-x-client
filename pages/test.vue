@@ -2,14 +2,11 @@
   <listing
     subtitle="Some info which you need to process"
     :headers="[
-      { id: 'myid', title: 'Hahah' },
-      { id: 'myid1', title: 'Hahah 1' },
-      { id: 'myid2', title: 'Hahah 2' }
+      { id: 'name', title: 'Name' },
+      { id: 'createdAt', title: 'Created At' },
+      { id: 'updatedAt', title: 'Updated At' }
     ]"
-    :data="[
-      { myid: 'buhahah', myid1: 'buhahahha111', myid2: 'mwhahaha2' },
-      { myid: 'buhahah', myid1: 'buhahahha111', myid2: 'mwhahaha2' },
-      { myid: 'buhahah', myid1: 'buhahahha111', myid2: 'mwhahaha2' }
-    ]"
+    :data-func="() => $strapi.find('courses')"
+    no-data-icon="mdi-account-plus-outline"
   />
 </template>

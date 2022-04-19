@@ -1,6 +1,5 @@
 import { Plugin } from '@nuxt/types';
-import { BaseApi } from '~/api';
-import { auth } from '~/api/auth';
+import { auth, BaseApi } from '~/api';
 import { BaseService } from '~/services';
 
 const api = {

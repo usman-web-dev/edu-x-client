@@ -1,6 +1,6 @@
 <template>
-  <v-simple-table class="shadow rounded-lg">
-    <thead>
+  <v-simple-table class="shadow rounded-lg base-table">
+    <thead v-show="data.length && !loading">
       <tr>
         <th
           v-for="(header, idx) in headers"
@@ -22,7 +22,8 @@
         </th>
       </tr>
     </thead>
-    <tbody>
+
+    <tbody v-show="data.length && !loading">
       <tr v-for="(item, idx) in data" :key="idx">
         <td
           v-for="({ id }, i) in headers"
@@ -45,22 +46,43 @@
           </div>
         </td>
       </tr>
-      <tr v-if="!data.length">
-        <td :colspan="headers.length" class="text-h5 grey--text py-3 text-center font-weight-light">Nothing found</td>
-      </tr>
     </tbody>
+
+    <tfoot>
+      <tr>
+        <td v-show="loading" :colspan="headers.length">
+          <v-skeleton-loader
+            type="list-item"
+            v-for="n in 3"
+            :key="n"
+            :max-width="`${n === 1 ? 100 : n === 2 ? 50 : 75}%`"
+          />
+        </td>
+        <td v-show="!data.length && !loading" :colspan="headers.length" class="py-4 text-center">
+          <span :class="defaultHeaderStyle" v-if="!$scopedSlots['no-data']">No data</span>
+          <slot name="no-data" v-bind="{ defaultItemStyle, defaultHeaderStyle }" />
+        </td>
+      </tr>
+    </tfoot>
   </v-simple-table>
 </template>
 
 <script lang="ts" src="./index.ts" />
 
 <style lang="scss" scoped>
-.left-radius {
-  border-radius: 0 !important;
-  border-bottom-left-radius: 8px !important;
-}
-.right-radius {
-  border-radius: 0 !important;
-  border-bottom-right-radius: 8px !important;
+.base-table {
+  tfoot {
+    td {
+      border: none !important;
+    }
+  }
+  .left-radius {
+    border-radius: 0 !important;
+    border-bottom-left-radius: 8px !important;
+  }
+  .right-radius {
+    border-radius: 0 !important;
+    border-bottom-right-radius: 8px !important;
+  }
 }
 </style>

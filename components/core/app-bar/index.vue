@@ -4,7 +4,10 @@
     <div class="d-flex justify-end width-100">
       <base-menu>
         <template #activator>
-          <profile-avatar />
+          <div class="d-flex align-center">
+            <span class="mr-2 secondary--text">{{ $helpers.titleize($strapi.user && $strapi.user.username) }}</span>
+            <profile-avatar />
+          </div>
         </template>
 
         <v-list-item
