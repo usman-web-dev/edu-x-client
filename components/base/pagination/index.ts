@@ -1,18 +1,17 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
-import { PaginationModel } from '~/api';
+import { Pagination } from '~/utils';
 
 @Component
 export default class BasePagination extends Vue {
   @Prop({
-    default: () => [],
-    type: Array
+    required: true,
+    type: Object
   })
-  private readonly pagination!: PaginationModel;
+  private readonly pagination!: Pagination;
 
   updatePage(n: number) {
-    if (n !== this.pagination.currentPage) {
-      // eslint-disable-next-line vue/no-mutating-props
-      this.pagination.currentPage = n;
+    if (n !== this.pagination.page) {
+      this.pagination.page = n;
       this.$emit('update-page');
     }
   }

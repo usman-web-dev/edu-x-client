@@ -1,4 +1,5 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
+import { ApiParamsModel } from '~/api/shared';
 import { AnyObject } from '~/utils';
 
 @Component({
@@ -18,7 +19,7 @@ export default class ListingComponent extends Vue {
   @Prop({
     type: Function
   })
-  private readonly dataFunc!: () => Promise<AnyObject>;
+  private readonly dataFunc!: (apiParams: ApiParamsModel) => Promise<AnyObject>;
 
   @Prop({
     default: 'mdi-shape-square-rounded-plus',
@@ -30,12 +31,16 @@ export default class ListingComponent extends Vue {
     return this.title ?? this.$helpers.titleize(this.$route.name ?? '');
   }
 
+  apiParams = new ApiParamsModel();
+
   data: Array<AnyObject> = [];
 
   async fetch() {
-    try {
-      await new Promise(res => setTimeout(res, 3000));
-      this.data = (await this.dataFunc()).data.map((d: any) => d.attributes);
-    } catch {}
+    const {
+      data,
+      meta: { pagination }
+    } = await this.dataFunc(this.apiParams);
+    this.data = data.map((d: any, id: number) => ({ ...d.attributes, id }));
+    this.apiParams.pagination = pagination;
   }
 }

@@ -1,7 +1,7 @@
 import { instanceToPlain } from 'class-transformer';
 
 export class BaseModel {
-  toJSON() {
+  protected toJSON() {
     return instanceToPlain(this);
   }
 }

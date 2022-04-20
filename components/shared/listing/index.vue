@@ -8,7 +8,7 @@
         </span>
       </div>
 
-      <base-btn v-if="data.length">
+      <base-btn v-show="data.length" :to="{ name: `${$route.name}-add` }">
         <v-icon class="mr-2">mdi-plus</v-icon>
         Add New
       </base-btn>
@@ -23,26 +23,36 @@
             Get started by creating a new {{ listingTitle.toLowerCase() }}
           </span>
 
-          <base-btn depressed>
+          <base-btn depressed :to="{ name: `${$route.name}-add` }">
             <v-icon class="mr-2">mdi-plus</v-icon>
             Add New
           </base-btn>
         </div>
       </template>
+
+      <template v-for="(_, name) in $scopedSlots" #[name]="slotData">
+        <slot :name="name" v-bind="slotData" />
+      </template>
     </base-table>
 
-    <div class="d-flex justify-space-between align-center py-2 flex-wrap">
+    <div class="d-flex justify-space-between align-center py-2 flex-wrap" v-if="data.length">
       <span>
         Showing
-        <span class="font-weight-medium">{{ 1 }}</span>
-        to
-        <span class="font-weight-medium">{{ 10 }}</span>
-        of
-        <span class="font-weight-medium">{{ 97 }}</span>
-        results
+        <span v-if="apiParams.pagination.total > 1">
+          <span class="font-weight-medium">{{ apiParams.firstItem }}</span>
+          -
+          <span class="font-weight-medium">{{ apiParams.lastItem }}</span>
+          of
+          <span class="font-weight-medium">{{ apiParams.pagination.total }}</span>
+          results
+        </span>
+        <span v-else>
+          <span class="font-weight-medium">1</span>
+          result
+        </span>
       </span>
 
-      <base-pagination class="ml-auto" />
+      <base-pagination class="ml-auto" :pagination="apiParams.pagination" />
     </div>
   </div>
 </template>

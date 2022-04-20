@@ -20,7 +20,12 @@ class DrawerService extends BaseService {
 
   links = [
     { title: 'Dashboard', icon: 'mdi-home-variant-outline', selectedIcon: 'mdi-home-variant', link: 'dashboard' },
-    { title: 'Test', icon: 'mdi-account-outline', selectedIcon: 'mdi-account', link: 'test' }
+    {
+      title: 'Courses',
+      icon: 'mdi-book-open-page-variant-outline',
+      selectedIcon: 'mdi-book-open-page-variant',
+      link: 'courses'
+    }
   ];
 }
 
