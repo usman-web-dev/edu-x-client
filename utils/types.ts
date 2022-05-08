@@ -28,3 +28,12 @@ export type NormalizedPaginationResponse<T> = {
   data: Array<T>;
   pagination: Pagination;
 };
+
+export type ListingAction = {
+  name: string;
+  icon: string;
+  color: string;
+  text: string;
+};
+
+export type OverrideListingAction = ListingAction | { name: string; hide: true };

@@ -1,6 +1,13 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import { ApiParamsModel } from '~/api/shared';
-import { AnyObject, NormalizedPaginationResponse } from '~/utils';
+import {
+  ACTIONS,
+  AnyObject,
+  ListingAction,
+  NormalizedPaginationResponse,
+  OverrideListingAction,
+  TableHeader
+} from '~/utils';
 
 @Component({
   inheritAttrs: false
@@ -22,9 +29,31 @@ export default class ListingComponent extends Vue {
   private readonly dataFunc!: () => Promise<NormalizedPaginationResponse<AnyObject>>;
 
   @Prop({
+    type: Function
+  })
+  private readonly deleteFunc?: (id: number) => Promise<any>;
+
+  @Prop({
     type: Object
   })
   private readonly apiParams!: ApiParamsModel;
+
+  @Prop({
+    default: () => [],
+    type: Array
+  })
+  private readonly actions!: Array<ListingAction>;
+
+  @Prop({
+    type: Function
+  })
+  private readonly overrideActions?: <T>(data: T) => Array<OverrideListingAction>;
+
+  @Prop({
+    default: true,
+    type: Boolean
+  })
+  private readonly showActions!: boolean;
 
   @Prop({
     default: 'mdi-shape-square-rounded-plus',
@@ -36,6 +65,40 @@ export default class ListingComponent extends Vue {
     return this.title ?? this.$helpers.titleize(this.$route.name ?? '');
   }
 
+  getItemActions(item: AnyObject) {
+    const actions = [...this.actions, ACTIONS.edit, ACTIONS.delete];
+
+    if (this.overrideActions) {
+      this.overrideActions(item).forEach(action => {
+        const idx = actions.findIndex(({ name }) => action.name === name);
+
+        if (idx > -1) {
+          if ('hide' in action) {
+            actions.splice(idx, 1);
+          } else {
+            actions[idx] = action;
+          }
+        }
+      });
+    }
+
+    return actions;
+  }
+
+  get headers() {
+    const headers: Array<TableHeader> = this.$attrs.headers as any;
+
+    if (this.showActions) {
+      headers.push({
+        id: 'actions',
+        title: 'Actions',
+        width: '1%'
+      });
+    }
+
+    return headers;
+  }
+
   data: Array<AnyObject> = [];
 
   async fetch() {
@@ -43,5 +106,30 @@ export default class ListingComponent extends Vue {
 
     this.data = data;
     this.apiParams.pagination = pagination;
+  }
+
+  async emitItem(name: string, item?: AnyObject) {
+    if (item) {
+      if (name === 'delete') {
+        if (await this.$confirm.confirm('Delete Confirmation', 'Are you sure you want to delete?')) {
+          if (!this.deleteFunc) {
+            this.$emit(name, item.id);
+          } else {
+            this.$nuxt.$loading.start();
+            try {
+              await this.deleteFunc(item.id);
+              this.$fetch();
+            } catch {
+            } finally {
+              this.$nuxt.$loading.finish();
+            }
+          }
+        }
+      } else if (name === 'edit') {
+        this.$router.push({ name: `${this.$route.name}-id-edit`, params: { id: item.id } });
+      } else {
+        this.$emit(name, item);
+      }
+    }
   }
 }
