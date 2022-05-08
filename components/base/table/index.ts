@@ -28,4 +28,16 @@ export default class BaseTable extends Vue {
   get defaultItemStyle() {
     return 'text-md-subtitle-2 text-caption font-weight-regular secondary--text';
   }
+
+  getData({ id, type }: TableHeader, item: AnyObject) {
+    if (item[id]) {
+      if (!type) {
+        return item[id];
+      } else if (type === 'date') {
+        return this.$helpers.formatDate(item[id]);
+      }
+    }
+
+    return 'N\\A';
+  }
 }
