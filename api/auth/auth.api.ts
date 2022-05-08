@@ -13,7 +13,7 @@ class AuthApi extends BaseApi {
     return this.$strapi.resetPassword({ ...data });
   }
   async logout() {
-    if (await this.$context.$confirm.confirm('Are you sure you want to logout?')) {
+    if (await this.$context.$confirm.confirm('Logout', 'Are you sure you want to logout?')) {
       await this.$strapi.logout();
 
       this.$context.app.router?.push('/auth/login');

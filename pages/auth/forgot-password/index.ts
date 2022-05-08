@@ -6,9 +6,10 @@ import { ForgotPasswordModel } from '~/api/auth';
 })
 export default class ForgotPasswordView extends Vue {
   forgotPasswordData = new ForgotPasswordModel();
+  loading = false;
 
   async forgotPassword() {
-    this.$nuxt.$loading.start();
+    this.loading = true;
 
     try {
       await this.$api.auth.forgotPassword(this.forgotPasswordData);
@@ -17,7 +18,7 @@ export default class ForgotPasswordView extends Vue {
       this.$alert.show('Reset password link sent to your email');
     } catch {
     } finally {
-      this.$nuxt.$loading.finish();
+      this.loading = false;
     }
   }
 }

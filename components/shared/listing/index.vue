@@ -8,7 +8,7 @@
         </span>
       </div>
 
-      <base-btn v-show="data.length" :to="{ name: `${$route.name}-add` }">
+      <base-btn v-if="data.length" :to="{ name: `${$route.name}-add` }">
         <v-icon class="mr-2">mdi-plus</v-icon>
         Add New
       </base-btn>

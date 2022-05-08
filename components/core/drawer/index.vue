@@ -21,7 +21,7 @@
     </v-list-item>
 
     <v-list dense>
-      <v-list-item v-for="item in drawerSrv.links" :key="item.title" nuxt :to="{ name: item.link }" class="mb-2">
+      <v-list-item v-for="item in drawerSrv.links" :key="item.title" nuxt :to="{ name: item.link }" class="mb-2" exact>
         <base-tooltip
           :msg="drawerSrv.miniVariant ? item.title : ''"
           #default="{ on }"

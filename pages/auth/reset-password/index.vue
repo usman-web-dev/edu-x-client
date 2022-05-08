@@ -1,6 +1,6 @@
 <template>
   <base-form #default="{ invalid }" @submit="resetPassword">
-    <base-card title-in="center">
+    <base-card title-in="center" rounded="xl" class="pa-5">
       <template #title>
         <h1 class="secondary--text">Reset Password</h1>
       </template>
@@ -21,7 +21,7 @@
       />
 
       <template #actions>
-        <base-btn block :disabled="invalid" type="submit" large>Reset Password</base-btn>
+        <base-btn block :disabled="invalid || loading" type="submit" large :loading="loading">Reset Password</base-btn>
       </template>
     </base-card>
   </base-form>

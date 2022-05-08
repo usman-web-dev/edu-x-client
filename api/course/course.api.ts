@@ -1,11 +1,22 @@
-import { NormalizedPaginationResponse } from '~/utils';
 import { BaseApi } from '../base.api';
 import { ApiParamsModel } from '../shared';
 import { CourseModel } from './course.model';
 
 class CourseApi extends BaseApi {
-  async find(params: ApiParamsModel) {
-    return this.$strapi.find<NormalizedPaginationResponse<CourseModel>>('courses', this.buildApiParams(params));
+  find(params: ApiParamsModel) {
+    return this._find('courses', params);
+  }
+
+  findOne(id: number) {
+    return this._findOne('courses', id);
+  }
+
+  create(course: CourseModel) {
+    return this._create<CourseModel>('courses', course);
+  }
+
+  update(id: number, course: CourseModel) {
+    return this._update<CourseModel>('courses', id, course);
   }
 }
 

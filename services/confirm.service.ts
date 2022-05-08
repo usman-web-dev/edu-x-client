@@ -1,9 +1,10 @@
 export type Confirm = {
-  confirm(msg: string): Promise<boolean>;
+  confirm(title: string, msg: string): Promise<boolean>;
 };
 
 class ConfirmService implements Confirm {
   private _Mode = false;
+  Title = '';
   Message = '';
   Resolve!: (val: boolean) => void;
 
@@ -11,7 +12,8 @@ class ConfirmService implements Confirm {
     return this._Mode;
   }
 
-  confirm(msg: string) {
+  confirm(title: string, msg: string) {
+    this.Title = title;
     this.Message = msg;
     this._Mode = true;
 

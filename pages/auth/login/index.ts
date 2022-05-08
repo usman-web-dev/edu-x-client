@@ -6,9 +6,10 @@ import { LoginModel } from '~/api/auth';
 })
 export default class LoginView extends Vue {
   loginData = new LoginModel();
+  loading = false;
 
   async login() {
-    this.$nuxt.$loading.start();
+    this.loading = true;
 
     try {
       await this.$api.auth.login(this.loginData);
@@ -16,7 +17,7 @@ export default class LoginView extends Vue {
       this.$router.push('/dashboard');
     } catch {
     } finally {
-      this.$nuxt.$loading.finish();
+      this.loading = false;
     }
   }
 }

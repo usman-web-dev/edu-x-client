@@ -1,8 +1,8 @@
 <template>
   <base-form #default="{ invalid }" @submit="login">
-    <base-card title-in="center">
+    <base-card title-in="center" rounded="xl" class="pa-5">
       <template #title>
-        <h1 class="secondary--text">Login</h1>
+        <h2 class="secondary--text">Login</h2>
       </template>
 
       <base-text-field label="Email" type="email" v-model="loginData.email" rules="required|email" autofocus />
@@ -10,7 +10,7 @@
 
       <template #actions>
         <div class="width-100">
-          <base-btn block :disabled="invalid" type="submit" large>Login</base-btn>
+          <base-btn block :disabled="invalid || loading" type="submit" large :loading="loading">Login</base-btn>
           <div class="text-center mt-4">
             <nuxt-link to="/auth/forgot-password">Forgot Password?</nuxt-link>
           </div>
