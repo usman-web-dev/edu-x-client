@@ -7,6 +7,7 @@ export type TableHeader = {
   title: string;
   width?: string;
   dir?: 'left' | 'center' | 'right';
+  type?: 'date';
 };
 
 export type Pagination = {

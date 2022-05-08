@@ -25,6 +25,12 @@ class DrawerService extends BaseService {
       icon: 'mdi-book-open-page-variant-outline',
       selectedIcon: 'mdi-book-open-page-variant',
       link: 'courses'
+    },
+    {
+      title: 'Teachers',
+      icon: 'mdi-account-multiple-outline',
+      selectedIcon: 'mdi-account-multiple',
+      link: 'teachers'
     }
   ];
 }

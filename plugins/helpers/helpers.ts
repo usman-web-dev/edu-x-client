@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { ApiParamsModel } from '~/api';
 import { AnyObject } from '~/utils';
 
@@ -38,6 +39,10 @@ class Helpers {
     });
 
     return ([] as Array<string>).concat.apply([], query).join('&');
+  }
+
+  formatDate(date: Date | string) {
+    return format(new Date(date), 'do MMM, yyyy');
   }
 }
 

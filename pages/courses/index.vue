@@ -3,8 +3,7 @@
     subtitle="All courses here"
     :headers="[
       { id: 'name', title: 'Name' },
-      { id: 'createdAt', title: 'Created At' },
-      { id: 'updatedAt', title: 'Updated At' }
+      { id: 'createdAt', title: 'Created At', type: 'date' }
     ]"
     :data-func="() => $api.course.find(apiParams)"
     no-data-icon="mdi-account-plus-outline"

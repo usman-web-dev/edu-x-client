@@ -27,8 +27,8 @@
       <tbody>
         <tr v-for="(item, idx) in data" :key="idx">
           <td
-            v-for="({ id }, i) in headers"
-            :key="i"
+            v-for="(header, i) in headers"
+            :key="header.id"
             class="px-5 py-4"
             :class="{
               'left-radius': idx === data.length - 1 && !i,
@@ -38,12 +38,12 @@
           >
             <div>
               <slot
-                :name="`item_${id.replace('$', '')}`"
-                v-if="$scopedSlots[`item_${id.replace('$', '')}`]"
+                :name="`item_${header.id.replace('$', '')}`"
+                v-if="$scopedSlots[`item_${header.id.replace('$', '')}`]"
                 :item="item"
                 :default-style="defaultItemStyle"
               />
-              <span :class="defaultItemStyle" v-else v-html="item[id]" />
+              <span :class="defaultItemStyle" v-else v-html="getData(header, item)" />
             </div>
           </td>
         </tr>
