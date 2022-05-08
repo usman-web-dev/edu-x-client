@@ -31,6 +31,12 @@ class DrawerService extends BaseService {
       icon: 'mdi-account-multiple-outline',
       selectedIcon: 'mdi-account-multiple',
       link: 'teachers'
+    },
+    {
+      title: 'Students',
+      icon: 'mdi-account-group-outline',
+      selectedIcon: 'mdi-account-group',
+      link: 'students'
     }
   ];
 }
