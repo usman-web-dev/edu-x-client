@@ -2,7 +2,7 @@
   <base-form #default="{ invalid }" @submit="resetPassword">
     <base-card title-in="center" rounded="xl" class="pa-5">
       <template #title>
-        <h1 class="secondary--text">Reset Password</h1>
+        <h2 class="secondary--text">Reset Password</h2>
       </template>
 
       <base-text-field
