@@ -3,7 +3,7 @@
     <v-row justify="center" align="center">
       <v-col cols="12" lg="8" xl="6">
         <div class="d-flex justify-center align-center align-lg-start flex-column flex-lg-row">
-          <h2 class="text-h4 text-lg-h2 primary--text font-weight-bold">{{ error.statusCode }}</h2>
+          <h2 class="text-h1 primary--text font-weight-bold">{{ error.statusCode }}</h2>
           <v-divider vertical class="grey darken-1 mx-8 d-none d-lg-block" />
           <div class="text-center text-lg-left">
             <h2 class="text-h4 text-lg-h2 white--text font-weight-bold">{{ errorDetails.title }}</h2>

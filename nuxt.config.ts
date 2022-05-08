@@ -1,6 +1,8 @@
 import { NuxtConfig } from '@nuxt/types';
 
 const config: NuxtConfig = {
+  ssr: false,
+
   head: {
     titleTemplate: '%s - EduX',
     title: 'EduX',
@@ -24,6 +26,21 @@ const config: NuxtConfig = {
         href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap'
       }
     ]
+  },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'courses-id-edit',
+        path: '/courses/:id/edit',
+        component: resolve(__dirname, 'pages/courses/add/index.vue')
+      });
+    },
+    prefetchLinks: false
+  },
+
+  render: {
+    resourceHints: false
   },
 
   css: ['@/assets/scss/index.scss'],

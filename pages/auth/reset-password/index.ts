@@ -18,9 +18,10 @@ import { ResetPasswordModel } from '~/api/auth';
 })
 export default class ResetPasswordView extends Vue {
   resetPasswordData = new ResetPasswordModel();
+  loading = false;
 
   async resetPassword() {
-    this.$nuxt.$loading.start();
+    this.loading = true;
 
     try {
       await this.$api.auth.resetPassword({ ...this.resetPasswordData, code: this.$route.query.code as string });
@@ -29,7 +30,7 @@ export default class ResetPasswordView extends Vue {
       this.$alert.show('Your password has been reset, you can continue');
     } catch {
     } finally {
-      this.$nuxt.$loading.finish();
+      this.loading = false;
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
-import { AnyObject } from '~/utils';
+import { ApiParamsModel } from '~/api/shared';
+import { AnyObject, NormalizedPaginationResponse } from '~/utils';
 
 @Component({
   inheritAttrs: false
@@ -18,7 +19,12 @@ export default class ListingComponent extends Vue {
   @Prop({
     type: Function
   })
-  private readonly dataFunc!: () => Promise<AnyObject>;
+  private readonly dataFunc!: () => Promise<NormalizedPaginationResponse<AnyObject>>;
+
+  @Prop({
+    type: Object
+  })
+  private readonly apiParams!: ApiParamsModel;
 
   @Prop({
     default: 'mdi-shape-square-rounded-plus',
@@ -33,9 +39,9 @@ export default class ListingComponent extends Vue {
   data: Array<AnyObject> = [];
 
   async fetch() {
-    try {
-      await new Promise(res => setTimeout(res, 3000));
-      this.data = (await this.dataFunc()).data.map((d: any) => d.attributes);
-    } catch {}
+    const { data, pagination } = await this.dataFunc();
+
+    this.data = data;
+    this.apiParams.pagination = pagination;
   }
 }
