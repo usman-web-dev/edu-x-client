@@ -7,6 +7,8 @@ export class UserModel extends BaseModel {
   createdAt!: Date;
   updateAt!: Date;
   role!: RoleModel;
+  blocked = false;
+  private provider = 'local';
 
   constructor(data?: Partial<UserModel>) {
     super();
