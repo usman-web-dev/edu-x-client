@@ -6,7 +6,7 @@
       </div>
     </template>
 
-    <v-list nav dense>
+    <v-list dense>
       <slot />
     </v-list>
   </v-menu>

@@ -18,6 +18,10 @@ class CourseApi extends BaseApi {
   update(id: number, course: CourseModel) {
     return this._update<CourseModel>('courses', id, course);
   }
+
+  delete(id: number) {
+    return this._delete('courses', id);
+  }
 }
 
 export const course = new CourseApi();

@@ -44,4 +44,7 @@ export abstract class BaseApi {
   protected _update<T, E = T>(entity: string, id: number, data: T) {
     return this.$strapi.update<E>(entity, '' + id, { data } as any);
   }
+  protected _delete(entity: string, id: number) {
+    return this.$strapi.delete(entity, '' + id);
+  }
 }

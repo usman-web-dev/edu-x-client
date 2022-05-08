@@ -14,7 +14,7 @@
       </base-btn>
     </div>
 
-    <base-table v-bind="$attrs" v-on="$listeners" :data="data" :loading="$fetchState.pending">
+    <base-table v-bind="$attrs" v-on="$listeners" :headers="headers" :data="data" :loading="$fetchState.pending">
       <template #no-data="{ defaultHeaderStyle, defaultItemStyle }">
         <div class="d-flex flex-column align-center py-3 py-md-8">
           <v-icon color="secondary" size="36" class="mb-2 text--lighten-4">{{ noDataIcon }}</v-icon>
@@ -28,6 +28,24 @@
             Add New
           </base-btn>
         </div>
+      </template>
+
+      <template v-if="showActions" #item_actions="{ item }">
+        <base-menu dense min-width="150" left>
+          <template #activator="{ on }">
+            <v-icon color="grey" v-on="on">mdi-dots-vertical</v-icon>
+          </template>
+
+          <template v-for="({ name, icon, color, text }, idx) in getItemActions(item)">
+            <v-divider v-if="idx" :key="`d-${name}`" />
+            <v-list-item :key="`item-${name}`" @click="emitItem(name, item)">
+              <v-list-item-icon class="mr-2">
+                <v-icon :color="color">{{ icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>{{ text }}</v-list-item-title>
+            </v-list-item>
+          </template>
+        </base-menu>
       </template>
 
       <template v-for="(_, name) in $scopedSlots" #[name]="slotData">

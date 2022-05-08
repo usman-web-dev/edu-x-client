@@ -18,6 +18,10 @@ class UserApi extends BaseApi {
   update(id: number, user: UserModel) {
     return this._update<UserModel>('users', id, user);
   }
+
+  delete(id: number) {
+    return this._delete('users', id);
+  }
 }
 
 export const user = new UserApi();

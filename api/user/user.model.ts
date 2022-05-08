@@ -8,6 +8,7 @@ export class UserModel extends BaseModel {
   updateAt!: Date;
   role!: RoleModel;
   blocked = false;
+  confirmed = false;
   private provider = 'local';
 
   constructor(data?: Partial<UserModel>) {
