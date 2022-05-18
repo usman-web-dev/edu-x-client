@@ -1,11 +1,12 @@
 import { Plugin } from '@nuxt/types';
-import { auth, BaseApi, course, user } from '~/api';
+import { auth, BaseApi, course, department, user } from '~/api';
 import { BaseService } from '~/services';
 
 const api = {
   auth,
   course,
-  user
+  user,
+  department
 };
 
 export type Api = typeof api;

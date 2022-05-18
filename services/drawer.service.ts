@@ -23,6 +23,12 @@ class DrawerService extends BaseService {
   links: { title: string; icon: string; selectedIcon: string; link: string; params?: Route['params'] }[] = [
     { title: 'Dashboard', icon: 'mdi-home-variant-outline', selectedIcon: 'mdi-home-variant', link: 'dashboard' },
     {
+      title: 'Departments',
+      icon: 'mdi-office-building-outline',
+      selectedIcon: 'mdi-office-building',
+      link: 'departments'
+    },
+    {
       title: 'Courses',
       icon: 'mdi-book-open-page-variant-outline',
       selectedIcon: 'mdi-book-open-page-variant',
