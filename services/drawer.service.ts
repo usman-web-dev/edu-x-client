@@ -20,38 +20,38 @@ class DrawerService extends BaseService {
     }
   }
 
-  links: { title: string; icon: string; selectedIcon: string; link: string; params?: Route['params'] }[] = [
-    { title: 'Dashboard', icon: 'mdi-home-variant-outline', selectedIcon: 'mdi-home-variant', link: 'dashboard' },
+  links: { title: string; icon: string; link: string; params?: Route['params'] }[] = [
+    { title: 'Dashboard', icon: 'mdi-home-variant-outline', link: 'dashboard' },
     {
       title: 'Departments',
       icon: 'mdi-office-building-outline',
-      selectedIcon: 'mdi-office-building',
       link: 'departments'
+    },
+    {
+      title: 'Classes',
+      icon: 'mdi-google-classroom',
+      link: 'classes'
     },
     {
       title: 'Courses',
       icon: 'mdi-book-open-page-variant-outline',
-      selectedIcon: 'mdi-book-open-page-variant',
       link: 'courses'
     },
     {
       title: 'Admins',
       icon: 'mdi-account-outline',
-      selectedIcon: 'mdi-account',
       link: 'users-role',
       params: { role: `${RoleType.ADMIN}` }
     },
     {
       title: 'Teachers',
       icon: 'mdi-account-multiple-outline',
-      selectedIcon: 'mdi-account-multiple',
       link: 'users-role',
       params: { role: `${RoleType.TEACHER}` }
     },
     {
       title: 'Students',
-      icon: 'mdi-account-group-outline',
-      selectedIcon: 'mdi-account-group',
+      icon: 'mdi-account-school-outline',
       link: 'users-role',
       params: { role: `${RoleType.STUDENT}` }
     }

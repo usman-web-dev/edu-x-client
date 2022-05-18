@@ -33,14 +33,19 @@ const config: NuxtConfig = {
       routes.push(
         ...[
           {
-            name: 'courses-id-edit',
-            path: '/courses/:id/edit',
-            component: resolve(__dirname, 'pages/courses/add/index.vue')
-          },
-          {
             name: 'departments-id-edit',
             path: '/departments/:id/edit',
             component: resolve(__dirname, 'pages/departments/add/index.vue')
+          },
+          {
+            name: 'classes-id-edit',
+            path: '/classes/:id/edit',
+            component: resolve(__dirname, 'pages/classes/add/index.vue')
+          },
+          {
+            name: 'courses-id-edit',
+            path: '/courses/:id/edit',
+            component: resolve(__dirname, 'pages/courses/add/index.vue')
           },
           {
             name: 'users-role-id-edit',

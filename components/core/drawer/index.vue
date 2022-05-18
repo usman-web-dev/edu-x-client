@@ -38,12 +38,7 @@
           content-class="ml-2"
         >
           <v-list-item-icon class="mr-3" v-on="drawerSrv.miniVariant ? on : undefined">
-            <v-icon>{{
-              $route.name === item.link &&
-              (!item.params || JSON.stringify($route.params) === JSON.stringify(item.params))
-                ? item.selectedIcon
-                : item.icon
-            }}</v-icon>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
