@@ -4,3 +4,9 @@ export enum RoleType {
   TEACHER = 3,
   STUDENT = 4
 }
+
+export enum Role {
+  ADMIN = 'admin',
+  TEACHER = 'teacher',
+  STUDENT = 'student'
+}

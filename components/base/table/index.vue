@@ -24,7 +24,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody v-if="data.length && !loading">
         <tr v-for="(item, idx) in data" :key="idx">
           <td
             v-for="(header, i) in headers"
@@ -49,7 +49,7 @@
         </tr>
       </tbody>
 
-      <tfoot v-if="!data.length">
+      <tfoot v-if="!data.length || loading">
         <tr>
           <td v-if="loading" :colspan="headers.length">
             <v-skeleton-loader
@@ -59,7 +59,7 @@
               :max-width="`${n === 1 ? 100 : n === 2 ? 50 : 75}%`"
             />
           </td>
-          <td v-else :colspan="headers.length" class="py-4 text-center">
+          <td v-else-if="!data.length" :colspan="headers.length" class="py-4 text-center">
             <span :class="defaultHeaderStyle" v-if="!$scopedSlots['no-data']">No data</span>
             <slot name="no-data" v-bind="{ defaultItemStyle, defaultHeaderStyle }" />
           </td>

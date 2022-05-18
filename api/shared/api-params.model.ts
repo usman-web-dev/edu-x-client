@@ -18,7 +18,7 @@ export class ApiParamsModel<T extends BaseModel = BaseModel> extends BaseModel {
 
   get lastItem() {
     const { total, pageSize } = this.pagination;
-    return Math.min(this.firstItem + pageSize, total);
+    return Math.min(this.firstItem + pageSize - 1, total);
   }
 
   constructor(data?: Partial<ApiParamsModel<T>>) {
