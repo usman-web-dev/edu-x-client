@@ -21,7 +21,14 @@
     </v-list-item>
 
     <v-list dense>
-      <v-list-item v-for="item in drawerSrv.links" :key="item.title" nuxt :to="{ name: item.link }" class="mb-2" exact>
+      <v-list-item
+        v-for="item in drawerSrv.links"
+        :key="item.title"
+        nuxt
+        :to="{ name: item.link, params: item.params }"
+        class="mb-2"
+        exact-path
+      >
         <base-tooltip
           :msg="drawerSrv.miniVariant ? item.title : ''"
           #default="{ on }"
@@ -31,7 +38,12 @@
           content-class="ml-2"
         >
           <v-list-item-icon class="mr-3" v-on="drawerSrv.miniVariant ? on : undefined">
-            <v-icon>{{ $route.name === item.link ? item.selectedIcon : item.icon }}</v-icon>
+            <v-icon>{{
+              $route.name === item.link &&
+              (!item.params || JSON.stringify($route.params) === JSON.stringify(item.params))
+                ? item.selectedIcon
+                : item.icon
+            }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>

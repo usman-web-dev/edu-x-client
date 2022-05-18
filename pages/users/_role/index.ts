@@ -1,18 +1,49 @@
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Watch } from 'nuxt-property-decorator';
 import { ApiParamsModel, UserModel } from '~/api';
 import { ListingAction, OverrideListingAction, RoleType } from '~/utils';
 
-@Component
-export default class TeachersView extends Vue {
+@Component({
+  middleware({ error, params: { role } }) {
+    if (!Object.values(RoleType).includes(+role)) {
+      error({ message: `Wrong path, 'type' is missing`, statusCode: 404 });
+    }
+  }
+})
+export default class UsersView extends Vue {
+  get userType(): RoleType {
+    return +(this.$route.params.role as string);
+  }
+
   apiParams = new ApiParamsModel<UserModel>({
     filters: {
       role: {
         id: {
-          $eq: RoleType.TEACHER
+          $eq: this.userType
         }
       }
     }
   });
+
+  @Watch('$route.params')
+  onRouteChange() {
+    this.apiParams = new ApiParamsModel<UserModel>({
+      filters: {
+        role: {
+          id: {
+            $eq: this.$route.params.role
+          }
+        }
+      }
+    });
+  }
+
+  get title() {
+    return this.$helpers.titleize(this.$helpers.getUserTypeFromNumber(this.userType, true));
+  }
+
+  get subtitle() {
+    return `All ${this.title.toLocaleLowerCase()} here`;
+  }
 
   actions: Array<ListingAction> = [
     {

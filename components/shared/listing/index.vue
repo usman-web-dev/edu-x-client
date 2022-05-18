@@ -8,7 +8,7 @@
         </span>
       </div>
 
-      <base-btn v-if="data.length" :to="{ name: `${$route.name}-add` }">
+      <base-btn v-if="data.length" :to="{ name: `${$route.name}-add`, params: saveParams }">
         <v-icon class="mr-2">mdi-plus</v-icon>
         Add New
       </base-btn>
@@ -70,7 +70,7 @@
         </span>
       </span>
 
-      <base-pagination class="ml-auto" :pagination="apiParams.pagination" />
+      <base-pagination class="ml-auto" :pagination="apiParams.pagination" @update-page="updatePage" />
     </div>
   </div>
 </template>

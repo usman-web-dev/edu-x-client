@@ -1,4 +1,5 @@
-import { Component, Prop, Vue } from 'nuxt-property-decorator';
+import { Component, Prop, Vue, Watch } from 'nuxt-property-decorator';
+import { Route } from 'vue-router';
 import { ApiParamsModel } from '~/api/shared';
 import {
   ACTIONS,
@@ -11,6 +12,7 @@ import {
 
 @Component({
   inheritAttrs: false
+  // watchQuery: ['page']
 })
 export default class ListingComponent extends Vue {
   @Prop({
@@ -61,6 +63,11 @@ export default class ListingComponent extends Vue {
   })
   private readonly noDataIcon?: string;
 
+  @Prop({
+    type: Object
+  })
+  private readonly saveParams?: Route['params'];
+
   get listingTitle() {
     return this.title ?? this.$helpers.titleize(this.$route.name ?? '');
   }
@@ -102,6 +109,13 @@ export default class ListingComponent extends Vue {
   data: Array<AnyObject> = [];
 
   async fetch() {
+    const { page, pageSize } = this.$route.query;
+
+    if (page || pageSize) {
+      this.apiParams.pagination.page = +page || 1;
+      this.apiParams.pagination.pageSize = +pageSize || 25;
+    }
+
     const { data, pagination } = await this.dataFunc();
 
     this.data = data;
@@ -126,10 +140,21 @@ export default class ListingComponent extends Vue {
           }
         }
       } else if (name === 'edit') {
-        this.$router.push({ name: `${this.$route.name}-id-edit`, params: { id: item.id } });
+        this.$router.push({ name: `${this.$route.name}-id-edit`, params: { id: item.id, ...(this.saveParams ?? {}) } });
       } else {
         this.$emit(name, item);
       }
     }
+  }
+
+  @Watch('$route.query')
+  onQueryChange() {
+    this.$fetch();
+  }
+
+  updatePage() {
+    const { page, pageSize } = this.apiParams.pagination;
+
+    this.$router.replace({ query: { ...this.$route.query, pageSize: `${pageSize}`, page: `${page}` } });
   }
 }

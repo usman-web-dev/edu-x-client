@@ -1,3 +1,5 @@
+import { Route } from 'vue-router';
+import { RoleType } from '~/utils';
 import { BaseService } from './base.service';
 
 class DrawerService extends BaseService {
@@ -18,7 +20,7 @@ class DrawerService extends BaseService {
     }
   }
 
-  links = [
+  links: { title: string; icon: string; selectedIcon: string; link: string; params?: Route['params'] }[] = [
     { title: 'Dashboard', icon: 'mdi-home-variant-outline', selectedIcon: 'mdi-home-variant', link: 'dashboard' },
     {
       title: 'Courses',
@@ -27,16 +29,25 @@ class DrawerService extends BaseService {
       link: 'courses'
     },
     {
+      title: 'Admins',
+      icon: 'mdi-account-outline',
+      selectedIcon: 'mdi-account',
+      link: 'users-role',
+      params: { role: `${RoleType.ADMIN}` }
+    },
+    {
       title: 'Teachers',
       icon: 'mdi-account-multiple-outline',
       selectedIcon: 'mdi-account-multiple',
-      link: 'teachers'
+      link: 'users-role',
+      params: { role: `${RoleType.TEACHER}` }
     },
     {
       title: 'Students',
       icon: 'mdi-account-group-outline',
       selectedIcon: 'mdi-account-group',
-      link: 'students'
+      link: 'users-role',
+      params: { role: `${RoleType.STUDENT}` }
     }
   ];
 }
