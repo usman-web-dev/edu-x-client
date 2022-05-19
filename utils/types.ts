@@ -1,3 +1,5 @@
+import { Route } from 'vue-router';
+
 export type AnyObject = {
   [key: string]: any;
 };
@@ -37,3 +39,11 @@ export type ListingAction = {
 };
 
 export type OverrideListingAction = ListingAction | { name: string; hide: true };
+
+export type DrawerLink = {
+  title: string;
+  icon: string;
+  link?: string;
+  params?: Route['params'];
+  children?: Array<DrawerLink>;
+};
