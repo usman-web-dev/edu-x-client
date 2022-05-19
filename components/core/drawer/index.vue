@@ -21,31 +21,22 @@
     </v-list-item>
 
     <v-list dense>
-      <v-list-item
-        v-for="item in drawerSrv.links"
-        :key="item.title"
-        nuxt
-        :to="{ name: item.link, params: item.params }"
-        class="mb-2"
-        exact-path
-      >
-        <base-tooltip
-          :msg="drawerSrv.miniVariant ? item.title : ''"
-          #default="{ on }"
-          direction="right"
-          color="primary"
-          transition="slide-x-reverse-transition"
-          content-class="ml-2"
-        >
-          <v-list-item-icon class="mr-3" v-on="drawerSrv.miniVariant ? on : undefined">
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
+      <template v-for="item in drawerSrv.links">
+        <core-drawer-link :item="item" :key="`item-${item.title}`" v-if="!item.children" />
 
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </base-tooltip>
-      </v-list-item>
+        <v-list-group
+          :key="`group-${item.title}`"
+          color="white"
+          :value="drawerSrv.miniVariant || isGroupActive(item)"
+          v-else
+        >
+          <template #activator>
+            <core-drawer-link :item="item" content-class="pl-0" />
+          </template>
+
+          <core-drawer-link v-for="child in item.children" :item="child" :key="`child-${child.title}`" />
+        </v-list-group>
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>

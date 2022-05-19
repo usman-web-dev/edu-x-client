@@ -1,5 +1,4 @@
-import { Route } from 'vue-router';
-import { RoleType } from '~/utils';
+import { DrawerLink, RoleType } from '~/utils';
 import { BaseService } from './base.service';
 
 class DrawerService extends BaseService {
@@ -20,7 +19,7 @@ class DrawerService extends BaseService {
     }
   }
 
-  links: { title: string; icon: string; link: string; params?: Route['params'] }[] = [
+  links: Array<DrawerLink> = [
     { title: 'Dashboard', icon: 'mdi-home-variant-outline', link: 'dashboard' },
     {
       title: 'Departments',
@@ -38,22 +37,29 @@ class DrawerService extends BaseService {
       link: 'courses'
     },
     {
-      title: 'Admins',
+      title: 'Users',
       icon: 'mdi-account-outline',
-      link: 'users-role',
-      params: { role: `${RoleType.ADMIN}` }
-    },
-    {
-      title: 'Teachers',
-      icon: 'mdi-account-multiple-outline',
-      link: 'users-role',
-      params: { role: `${RoleType.TEACHER}` }
-    },
-    {
-      title: 'Students',
-      icon: 'mdi-account-school-outline',
-      link: 'users-role',
-      params: { role: `${RoleType.STUDENT}` }
+      link: 'users',
+      children: [
+        {
+          title: 'Admins',
+          icon: 'mdi-account-multiple-outline',
+          link: 'users-role',
+          params: { role: `${RoleType.ADMIN}` }
+        },
+        {
+          title: 'Teachers',
+          icon: 'mdi-account-school-outline',
+          link: 'users-role',
+          params: { role: `${RoleType.TEACHER}` }
+        },
+        {
+          title: 'Students',
+          icon: 'mdi-account-group-outline',
+          link: 'users-role',
+          params: { role: `${RoleType.STUDENT}` }
+        }
+      ]
     }
   ];
 }
