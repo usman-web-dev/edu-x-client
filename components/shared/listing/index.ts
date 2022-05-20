@@ -12,7 +12,6 @@ import {
 
 @Component({
   inheritAttrs: false
-  // watchQuery: ['page']
 })
 export default class ListingComponent extends Vue {
   @Prop({

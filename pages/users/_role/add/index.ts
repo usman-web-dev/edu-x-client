@@ -11,7 +11,7 @@ export default class UsersAddView extends Vue {
   }
 
   get title() {
-    return this.$helpers.titleize(this.$helpers.getUserTypeFromNumber(this.userType, true));
+    return this.$helpers.titleize(this.$helpers.getUserTypeFromNumber(this.userType));
   }
 
   get subtitle() {

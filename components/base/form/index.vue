@@ -1,5 +1,5 @@
 <template>
-  <validation-observer #default="slot" slim ref="baseForm">
+  <validation-observer #default="slot" slim>
     <v-form @submit.prevent="slot.invalid ? undefined : $emit('submit')">
       <slot v-bind="slot" />
     </v-form>
