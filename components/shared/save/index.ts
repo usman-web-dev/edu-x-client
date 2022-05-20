@@ -43,7 +43,9 @@ export default class SaveComponent extends Vue {
   }
 
   get isEdit(): number | undefined {
-    return +this.$route.params[this.editParam];
+    const param = this.$route.params[this.editParam];
+
+    return param ? +param : undefined;
   }
 
   async save() {

@@ -1,7 +1,6 @@
 <template>
   <validation-provider :rules="rules" v-slot="{ errors }" :vid="vid" slim>
     <v-text-field
-      ref="vTextFieldRef"
       :error-messages="errors"
       v-bind="$attrs"
       v-on="$listeners"
