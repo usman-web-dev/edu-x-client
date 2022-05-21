@@ -7,8 +7,8 @@ class SectionApi extends BaseApi {
     return this._find('sections', params);
   }
 
-  findOne(id: number) {
-    return this._findOne('sections', id);
+  findOne(id: number, params?: ApiParamsModel) {
+    return this._findOne('sections', id, params);
   }
 
   create(section: SectionModel) {

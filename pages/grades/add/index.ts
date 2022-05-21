@@ -1,7 +1,7 @@
 import { Component, Vue } from 'nuxt-property-decorator';
-import { GradeModel, InstituteModel } from '~/api';
+import { GradeModel } from '~/api';
 
 @Component
 export default class GradeAddView extends Vue {
-  grade = new GradeModel({ institute: new InstituteModel({ id: 1 }) });
+  grade = new GradeModel();
 }

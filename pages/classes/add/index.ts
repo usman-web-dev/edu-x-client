@@ -1,7 +1,9 @@
 import { Component, Vue } from 'nuxt-property-decorator';
-import { ClassModel } from '~/api';
+import { ApiParamsModel, BatchModel, ClassModel } from '~/api';
 
 @Component
 export default class ClassAddView extends Vue {
-  classData = new ClassModel();
+  classData = new ClassModel({ batch: new BatchModel() });
+  editApiParams = new ApiParamsModel({ populate: ['batch'] });
+  batchApiParams = new ApiParamsModel();
 }

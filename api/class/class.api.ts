@@ -7,8 +7,8 @@ class ClassApi extends BaseApi {
     return this._find('classes', params);
   }
 
-  findOne(id: number) {
-    return this._findOne('classes', id);
+  findOne(id: number, params?: ApiParamsModel) {
+    return this._findOne('classes', id, params);
   }
 
   create(classData: ClassModel) {

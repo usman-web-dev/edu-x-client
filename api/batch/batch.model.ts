@@ -3,6 +3,7 @@ import { ClassModel } from '../class';
 import { DepartmentModel } from '../department';
 
 export class BatchModel extends BaseModel {
+  id!: number;
   name = '';
   department!: DepartmentModel;
   classes!: Array<ClassModel>;
