@@ -1,16 +1,16 @@
 <template>
   <listing
-    subtitle="All departments here"
+    subtitle="All batches here"
     :headers="[
       { id: 'name', title: 'Name' },
-      { id: 'grade', title: 'Grade' }
+      { id: 'department', title: 'Department' }
     ]"
-    :data-func="() => $api.department.find(apiParams)"
-    :delete-func="id => $api.department.delete(id)"
+    :data-func="() => $api.batch.find(apiParams)"
+    :delete-func="id => $api.batch.delete(id)"
     no-data-icon="mdi-account-plus-outline"
     :api-params="apiParams"
   >
-    <template #item_grade="{ item: { grade: { name } }, defaultStyle }">
+    <template #item_department="{ item: { department: { name } }, defaultStyle }">
       <span :class="defaultStyle">{{ name }}</span>
     </template>
   </listing>

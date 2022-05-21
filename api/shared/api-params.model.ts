@@ -2,6 +2,7 @@ import { AnyObject, Pagination } from '~/utils';
 import { BaseModel } from '../base.model';
 
 export class ApiParamsModel<T extends BaseModel = BaseModel> extends BaseModel {
+  enablePagination = false;
   pagination: Pagination = {
     page: 1,
     pageCount: 0,
@@ -10,6 +11,7 @@ export class ApiParamsModel<T extends BaseModel = BaseModel> extends BaseModel {
   };
 
   filters: AnyObject = {};
+  populate: Array<string> | '*' = [];
 
   get firstItem() {
     const { page, pageSize } = this.pagination;

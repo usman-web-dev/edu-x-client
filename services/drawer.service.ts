@@ -22,14 +22,35 @@ class DrawerService extends BaseService {
   links: Array<DrawerLink> = [
     { title: 'Dashboard', icon: 'mdi-home-variant-outline', link: 'dashboard' },
     {
-      title: 'Departments',
-      icon: 'mdi-office-building-outline',
-      link: 'departments'
-    },
-    {
-      title: 'Classes',
+      title: 'Class Management',
       icon: 'mdi-google-classroom',
-      link: 'classes'
+      children: [
+        {
+          title: 'Grades',
+          icon: 'mdi-folder-account-outline',
+          link: 'grades'
+        },
+        {
+          title: 'Departments',
+          icon: 'mdi-office-building-outline',
+          link: 'departments'
+        },
+        {
+          title: 'Batches',
+          icon: 'mdi-calendar-account-outline',
+          link: 'batches'
+        },
+        {
+          title: 'Classes',
+          icon: 'mdi-account-supervisor-outline',
+          link: 'classes'
+        },
+        {
+          title: 'Sections',
+          icon: 'mdi-human-male-board-poll',
+          link: 'sections'
+        }
+      ]
     },
     {
       title: 'Courses',
@@ -39,7 +60,6 @@ class DrawerService extends BaseService {
     {
       title: 'Users',
       icon: 'mdi-account-outline',
-      link: 'users',
       children: [
         {
           title: 'Admins',

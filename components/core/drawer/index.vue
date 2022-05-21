@@ -7,6 +7,7 @@
     floating
     v-model="drawerSrv.mode"
     mobile-breakpoint="959"
+    width="280"
   >
     <v-list-item class="px-0">
       <v-list-item-content>
@@ -24,12 +25,7 @@
       <template v-for="item in drawerSrv.links">
         <core-drawer-link :item="item" :key="`item-${item.title}`" v-if="!item.children" />
 
-        <v-list-group
-          :key="`group-${item.title}`"
-          color="white"
-          :value="drawerSrv.miniVariant || isGroupActive(item)"
-          v-else
-        >
+        <v-list-group :key="`group-${item.title}`" color="white" :value="isGroupActive(item)" v-else>
           <template #activator>
             <core-drawer-link :item="item" content-class="pl-0" />
           </template>
