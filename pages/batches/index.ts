@@ -2,6 +2,6 @@ import { Component, Vue } from 'nuxt-property-decorator';
 import { ApiParamsModel } from '~/api';
 
 @Component
-export default class DepartmentsView extends Vue {
-  apiParams = new ApiParamsModel({ populate: ['grade'] });
+export default class BatchesView extends Vue {
+  apiParams = new ApiParamsModel({ populate: ['department'] });
 }

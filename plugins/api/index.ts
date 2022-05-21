@@ -1,5 +1,5 @@
 import { Plugin } from '@nuxt/types';
-import { auth, BaseApi, classApi, course, department, user } from '~/api';
+import { auth, BaseApi, batch, classApi, course, courseAssignment, department, grade, section, user } from '~/api';
 import { BaseService } from '~/services';
 
 const api = {
@@ -7,7 +7,11 @@ const api = {
   course,
   user,
   department,
-  class: classApi
+  class: classApi,
+  grade,
+  batch,
+  section,
+  courseAssignment
 };
 
 export type Api = typeof api;

@@ -33,6 +33,16 @@ const config: NuxtConfig = {
       routes.push(
         ...[
           {
+            name: 'grades-id-edit',
+            path: '/grades/:id/edit',
+            component: resolve(__dirname, 'pages/grades/add/index.vue')
+          },
+          {
+            name: 'batches-id-edit',
+            path: '/batches/:id/edit',
+            component: resolve(__dirname, 'pages/batches/add/index.vue')
+          },
+          {
             name: 'departments-id-edit',
             path: '/departments/:id/edit',
             component: resolve(__dirname, 'pages/departments/add/index.vue')
@@ -41,6 +51,11 @@ const config: NuxtConfig = {
             name: 'classes-id-edit',
             path: '/classes/:id/edit',
             component: resolve(__dirname, 'pages/classes/add/index.vue')
+          },
+          {
+            name: 'sections-id-edit',
+            path: '/sections/:id/edit',
+            component: resolve(__dirname, 'pages/sections/add/index.vue')
           },
           {
             name: 'courses-id-edit',

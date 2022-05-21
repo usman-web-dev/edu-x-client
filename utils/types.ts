@@ -19,8 +19,11 @@ export type Pagination = {
   total: number;
 };
 
-export type PaginationResponse<T> = {
-  data: Array<{ id: number; attributes: T }>;
+export type StrapiData<T, D extends 'array' | 'single' = 'single'> = {
+  data: D extends 'single' ? { id: number; attributes: T } : Array<{ id: number; attributes: T }>;
+};
+
+export type PaginationResponse<T> = StrapiData<T, 'array'> & {
   meta: {
     pagination: Pagination;
   };

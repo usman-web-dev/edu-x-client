@@ -57,6 +57,7 @@ export default class BaseSelect extends BaseInput {
 
   async fetch() {
     if (this.dataFunc && this.apiParams) {
+      this.apiParams.enablePagination = true;
       const { data, pagination } = await this.dataFunc();
 
       this.data = [...this.data, ...data];

@@ -7,8 +7,8 @@ class DepartmentApi extends BaseApi {
     return this._find('departments', params);
   }
 
-  findOne(id: number) {
-    return this._findOne('departments', id);
+  findOne(id: number, apiParams?: ApiParamsModel) {
+    return this._findOne('departments', id, apiParams);
   }
 
   create(department: DepartmentModel) {

@@ -108,6 +108,7 @@ export default class ListingComponent extends Vue {
   data: Array<AnyObject> = [];
 
   async fetch() {
+    this.apiParams.enablePagination = true;
     const { page, pageSize } = this.$route.query;
 
     if (page || pageSize) {
@@ -131,6 +132,7 @@ export default class ListingComponent extends Vue {
             this.$nuxt.$loading.start();
             try {
               await this.deleteFunc(item.id);
+              this.$alert.show('Record has been deleted.');
               this.$fetch();
             } catch {
             } finally {
