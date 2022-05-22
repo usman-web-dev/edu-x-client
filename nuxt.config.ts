@@ -63,6 +63,11 @@ const config: NuxtConfig = {
             component: resolve(__dirname, 'pages/courses/add/index.vue')
           },
           {
+            name: 'course-assignments-id-edit',
+            path: '/course-assignments/:id/edit',
+            component: resolve(__dirname, 'pages/course-assignments/add/index.vue')
+          },
+          {
             name: 'users-role-id-edit',
             path: '/users/:role/:id/edit',
             component: resolve(__dirname, 'pages/users/_role/add/index.vue')
