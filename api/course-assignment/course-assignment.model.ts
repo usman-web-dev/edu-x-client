@@ -4,9 +4,9 @@ import { SectionModel } from '../section';
 import { UserModel } from '../user';
 
 export class CourseAssignmentModel extends BaseModel {
-  section = new SectionModel();
-  course = new CourseModel();
-  teacher = new UserModel();
+  section: SectionModel | null = null;
+  course: CourseModel | null = null;
+  teacher: UserModel | null = null;
   students: Array<UserModel> = [];
 
   constructor(data?: Partial<CourseAssignmentModel>) {

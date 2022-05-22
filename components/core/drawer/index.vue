@@ -7,7 +7,7 @@
     floating
     v-model="drawerSrv.mode"
     mobile-breakpoint="959"
-    width="280"
+    width="290"
   >
     <v-list-item class="px-0">
       <v-list-item-content>

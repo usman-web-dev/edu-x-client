@@ -15,7 +15,7 @@ export abstract class BaseApi {
     }
 
     for (const key in data) {
-      if (typeof data[key] === 'object' && !!data[key].data) {
+      if (typeof data[key] === 'object' && !!data[key]?.data) {
         data[key] = this.mergeData(data[key].data);
       }
     }

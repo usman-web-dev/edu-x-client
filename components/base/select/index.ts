@@ -62,6 +62,8 @@ export default class BaseSelect extends BaseInput {
 
       this.data = [...this.data, ...data];
       this.apiParams.pagination = pagination;
+
+      this.$emit('data-loaded', this.data);
     }
   }
 

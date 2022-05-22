@@ -53,9 +53,20 @@ class DrawerService extends BaseService {
       ]
     },
     {
-      title: 'Courses',
-      icon: 'mdi-book-open-page-variant-outline',
-      link: 'courses'
+      title: 'Course Management',
+      icon: 'mdi-book-open-variant',
+      children: [
+        {
+          title: 'Courses',
+          icon: 'mdi-book-open-page-variant-outline',
+          link: 'courses'
+        },
+        {
+          title: 'Course Assignments',
+          icon: 'mdi-folder-plus-outline',
+          link: 'course-assignments'
+        }
+      ]
     },
     {
       title: 'Users',
