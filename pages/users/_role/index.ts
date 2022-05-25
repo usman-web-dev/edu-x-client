@@ -3,11 +3,14 @@ import { ApiParamsModel, UserModel } from '~/api';
 import { ListingAction, OverrideListingAction, RoleType } from '~/utils';
 
 @Component({
-  middleware({ error, params: { role } }) {
-    if (!Object.values(RoleType).includes(+role)) {
-      error({ message: `Wrong path, 'type' is missing`, statusCode: 404 });
+  middleware: [
+    'isAdmin',
+    ({ error, params: { role } }) => {
+      if (!Object.values(RoleType).includes(+role)) {
+        error({ message: `Wrong path, 'type' is missing`, statusCode: 404 });
+      }
     }
-  }
+  ]
 })
 export default class UsersView extends Vue {
   get userType(): RoleType {

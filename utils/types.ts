@@ -1,4 +1,5 @@
 import { Route } from 'vue-router';
+import { RoleType } from './enums';
 
 export type AnyObject = {
   [key: string]: any;
@@ -41,7 +42,7 @@ export type ListingAction = {
   text: string;
 };
 
-export type OverrideListingAction = ListingAction | { name: string; hide: true };
+export type OverrideListingAction = ListingAction | ({ name: string } & ({ hide: true } | { roles: Array<RoleType> }));
 
 export type DrawerLink = {
   title: string;
@@ -49,4 +50,5 @@ export type DrawerLink = {
   link?: string;
   params?: Route['params'];
   children?: Array<DrawerLink>;
+  roles?: Array<RoleType>;
 };

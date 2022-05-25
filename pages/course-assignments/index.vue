@@ -10,6 +10,7 @@
     :delete-func="id => $api.courseAssignment.delete(id)"
     no-data-icon="mdi-account-plus-outline"
     :api-params="apiParams"
+    :override-actions="overrideActions"
   >
     <template #item_class="{ item: { section: { name, class: { name: className, batch: { name: batchName } } } }, defaultStyle }">
       <span :class="defaultStyle">{{ batchName }} {{ className }} ({{ name }})</span>
