@@ -1,5 +1,5 @@
 import { Plugin } from '@nuxt/types';
-import { helpers } from './helpers';
+import { Helpers, helpers } from './helpers';
 
 interface Props {
   $helpers: typeof helpers;
@@ -14,7 +14,8 @@ declare module '@nuxt/types' {
   interface Context extends Props {}
 }
 
-const helper: Plugin = (_, inject) => {
+const helper: Plugin = (ctx, inject) => {
+  Helpers.prototype.$context = ctx;
   inject('helpers', helpers);
 };
 

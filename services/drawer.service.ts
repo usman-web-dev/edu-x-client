@@ -24,6 +24,7 @@ class DrawerService extends BaseService {
     {
       title: 'Class Management',
       icon: 'mdi-google-classroom',
+      roles: [RoleType.ADMIN],
       children: [
         {
           title: 'Grades',
@@ -59,7 +60,8 @@ class DrawerService extends BaseService {
         {
           title: 'Courses',
           icon: 'mdi-book-open-page-variant-outline',
-          link: 'courses'
+          link: 'courses',
+          roles: [RoleType.ADMIN]
         },
         {
           title: 'Course Assignments',
@@ -71,6 +73,7 @@ class DrawerService extends BaseService {
     {
       title: 'Users',
       icon: 'mdi-account-outline',
+      roles: [RoleType.ADMIN],
       children: [
         {
           title: 'Admins',

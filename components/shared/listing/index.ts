@@ -81,6 +81,9 @@ export default class ListingComponent extends Vue {
         if (idx > -1) {
           if ('hide' in action) {
             actions.splice(idx, 1);
+          } else if ('roles' in action) {
+            !action.roles.some(role => this.$helpers.hasRole(role)) && actions.splice(idx, 1);
+            console.log(!action.roles.some(role => this.$helpers.hasRole(role)));
           } else {
             actions[idx] = action;
           }

@@ -1,8 +1,11 @@
+import { Context } from '@nuxt/types';
 import { format } from 'date-fns';
-import { ApiParamsModel } from '~/api';
+import { ApiParamsModel, UserModel } from '~/api';
 import { AnyObject, Role, RoleType } from '~/utils';
 
-class Helpers {
+export class Helpers {
+  $context!: Context;
+
   upperFirst(text?: string) {
     return (text?.charAt(0).toUpperCase() ?? '') + text?.slice(1);
   }
@@ -121,6 +124,22 @@ class Helpers {
     }
 
     return roleToReturn ? `${roleToReturn}${plural ? 's' : ''}` : '';
+  }
+
+  hasRole(role: RoleType, user: UserModel = this.$context.$strapi.user as any) {
+    return user?.role?.id === role;
+  }
+
+  isAdmin() {
+    return this.hasRole(RoleType.ADMIN);
+  }
+
+  isTeacher() {
+    return this.hasRole(RoleType.TEACHER);
+  }
+
+  isStudent() {
+    return this.hasRole(RoleType.STUDENT);
   }
 }
 
