@@ -30,3 +30,8 @@ extend('confirmed', {
   ...confirmed,
   message: "{target} confirmation doesn't match!"
 });
+
+extend('number', {
+  validate: (value: string) => +value > 0,
+  message: 'This field must be a number!'
+});

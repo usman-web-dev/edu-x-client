@@ -1,4 +1,5 @@
 import { BaseModel } from '../base.model';
+import { DepartmentModel } from '../department';
 import { RoleModel } from './role.model';
 
 export class UserModel extends BaseModel {
@@ -10,6 +11,7 @@ export class UserModel extends BaseModel {
   blocked = false;
   confirmed = false;
   private provider = 'local';
+  department!: DepartmentModel;
 
   constructor(data?: Partial<UserModel>) {
     super();

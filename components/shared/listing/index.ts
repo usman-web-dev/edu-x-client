@@ -25,6 +25,12 @@ export default class ListingComponent extends Vue {
   private readonly subtitle?: string;
 
   @Prop({
+    default: true,
+    type: Boolean
+  })
+  private readonly add!: boolean;
+
+  @Prop({
     type: Function
   })
   private readonly dataFunc!: () => Promise<NormalizedPaginationResponse<AnyObject>>;
@@ -83,7 +89,6 @@ export default class ListingComponent extends Vue {
             actions.splice(idx, 1);
           } else if ('roles' in action) {
             !action.roles.some(role => this.$helpers.hasRole(role)) && actions.splice(idx, 1);
-            console.log(!action.roles.some(role => this.$helpers.hasRole(role)));
           } else {
             actions[idx] = action;
           }

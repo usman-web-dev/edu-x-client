@@ -8,7 +8,7 @@
         </span>
       </div>
 
-      <base-btn v-if="data.length" :to="{ name: `${$route.name}-add`, params: saveParams }">
+      <base-btn v-if="data.length && add" :to="{ name: `${$route.name}-add`, params: saveParams }">
         <v-icon class="mr-2">mdi-plus</v-icon>
         Add New
       </base-btn>
@@ -17,13 +17,13 @@
     <base-table v-bind="$attrs" v-on="$listeners" :headers="headers" :data="data" :loading="$fetchState.pending">
       <template #no-data="{ defaultHeaderStyle, defaultItemStyle }">
         <div class="d-flex flex-column align-center py-3 py-md-8">
-          <v-icon color="secondary" size="36" class="mb-2 text--lighten-4">{{ noDataIcon }}</v-icon>
+          <v-icon color="secondary" size="36" class="mb-2 text--lighten-4" v-if="add">{{ noDataIcon }}</v-icon>
           <span :class="defaultHeaderStyle">No {{ listingTitle.toLowerCase() }} found</span>
-          <span :class="defaultItemStyle" class="text--lighten-4 mb-5">
+          <span :class="defaultItemStyle" class="text--lighten-4 mb-5" v-if="add">
             Get started by creating a new {{ listingTitle.toLowerCase() }}
           </span>
 
-          <base-btn depressed :to="{ name: `${$route.name}-add` }">
+          <base-btn depressed :to="{ name: `${$route.name}-add` }" v-if="add">
             <v-icon class="mr-2">mdi-plus</v-icon>
             Add New
           </base-btn>

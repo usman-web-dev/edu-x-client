@@ -3,5 +3,5 @@ import { ApiParamsModel } from '~/api';
 
 @Component
 export default class SectionsView extends Vue {
-  apiParams = new ApiParamsModel({ populate: ['class', 'class.batch'] });
+  apiParams = new ApiParamsModel({ populate: ['class.batch.department.grade'] });
 }

@@ -8,7 +8,6 @@
     :edit-data-func="id => $api.class.findOne(id, editApiParams)"
     @edit-data="onEditData"
   >
-    <base-text-field label="Name" rules="required" v-model="classData.name" />
     <base-select
       label="Batch"
       rules="required"
@@ -20,7 +19,29 @@
       type="autocomplete"
       @change="onBatchChange"
       return-object
-    />
+      :filter="batchCustomFilter"
+    >
+      <template
+        v-for="slot in ['item', 'selection']"
+        #[slot]="{
+          item: {
+            name,
+            department: {
+              name: departmentName,
+              grade: { name: gradeName }
+            }
+          }
+        }"
+      >
+        <v-list-item-content :key="slot">
+          <v-list-item-title>{{ name }}</v-list-item-title>
+          <v-list-item-subtitle class="text-caption font-weight-light secondary--text text--lighten-3">
+            {{ departmentName }} ({{ gradeName }})
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </template>
+    </base-select>
+    <base-text-field label="Name" rules="required" v-model="classData.name" />
     <base-select
       v-if="courseKey"
       :key="courseKey"

@@ -3,5 +3,5 @@ import { ApiParamsModel } from '~/api';
 
 @Component
 export default class CoursesView extends Vue {
-  apiParams = new ApiParamsModel();
+  apiParams = new ApiParamsModel({ populate: ['department.grade'] });
 }

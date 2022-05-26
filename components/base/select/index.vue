@@ -20,6 +20,9 @@
       </template>
 
       <slot v-for="slot in Object.keys($slots)" :name="slot" :slot="slot" />
+      <template v-for="(_, name) in $scopedSlots" #[name]="slotData">
+        <slot :name="name" v-bind="slotData" />
+      </template>
     </component>
   </validation-provider>
 </template>

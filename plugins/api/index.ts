@@ -46,8 +46,8 @@ const plugin: Plugin = (ctx, inject) => {
   });
 
   // Inject custom APIs.
-  BaseApi.prototype.$strapi = ctx.$strapi;
-  BaseApi.prototype.$context = ctx;
+  (BaseApi.prototype as any).$strapi = ctx.$strapi;
+  (BaseApi.prototype as any).$context = ctx;
   BaseService.prototype.$context = ctx;
 
   inject('api', api);

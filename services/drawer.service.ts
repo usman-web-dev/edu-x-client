@@ -65,7 +65,7 @@ class DrawerService extends BaseService {
         },
         {
           title: 'Course Assignments',
-          icon: 'mdi-folder-plus-outline',
+          icon: 'mdi-folder-outline',
           link: 'course-assignments'
         }
       ]

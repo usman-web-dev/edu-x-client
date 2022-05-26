@@ -29,7 +29,7 @@ export default class CourseAssignmentsView extends Vue {
   }
 
   apiParams = new ApiParamsModel({
-    populate: ['course', 'section.class.batch', 'teacher', 'students'],
+    populate: ['course', 'section.class.batch.department.grade', 'teacher', 'students'],
     filters: this.filters
   });
 
