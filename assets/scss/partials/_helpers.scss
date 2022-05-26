@@ -26,6 +26,10 @@
   box-shadow: $box-shadow !important;
 }
 
+.gradient {
+  background: $gradient !important;
+}
+
 // Prevent user from selecting
 .no-select {
   pointer-events: none;

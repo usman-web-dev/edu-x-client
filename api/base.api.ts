@@ -4,8 +4,8 @@ import { AnyObject, NormalizedPaginationResponse, PaginationResponse, StrapiData
 import { ApiParamsModel } from './shared';
 
 export abstract class BaseApi {
-  $strapi!: Strapi;
-  $context!: Context;
+  protected $strapi!: Strapi;
+  protected $context!: Context;
 
   private mergeData(data: AnyObject | Array<AnyObject>): any {
     if (Array.isArray(data)) {
