@@ -9,7 +9,7 @@
       :input-value="value"
       @change="$emit('input', $event)"
       inset
-      color="secondary"
+      color="primary"
     >
       <slot v-for="slot in Object.keys($slots)" :name="slot" :slot="slot" />
     </v-switch>

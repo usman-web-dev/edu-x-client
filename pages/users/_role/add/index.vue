@@ -10,6 +10,7 @@
   >
     <base-text-field label="Name" rules="required" v-model="user.username" />
     <base-text-field label="Email" rules="required|email" v-model="user.email" />
+    <base-switch label="Blocked" v-model="user.blocked" />
   </save>
 </template>
 

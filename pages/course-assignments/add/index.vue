@@ -6,9 +6,46 @@
     :edit-func="id => $api.courseAssignment.update(id, courseAssignment)"
     @close="$router.push('/course-assignments')"
     :edit-data-func="id => $api.courseAssignment.findOne(id, editApiParams)"
-    @edit-data="courseAssignment = { ...courseAssignment, ...$event }"
+    @edit-data="onEditData"
   >
     <base-select
+      label="Class"
+      rules="required"
+      v-model="classData"
+      item-value="id"
+      :data-func="() => $api.class.find(classApiParams)"
+      :api-params="classApiParams"
+      type="autocomplete"
+      return-object
+      @change="onClassChange"
+      :filter="classCustomFilter"
+    >
+      <template
+        v-for="slot in ['item', 'selection']"
+        #[slot]="{
+          item: {
+            name,
+            batch: {
+              name: batchName,
+              department: {
+                name: departmentName,
+                grade: { name: gradeName }
+              }
+            }
+          }
+        }"
+      >
+        <v-list-item-content :key="slot">
+          <v-list-item-title>{{ batchName }} ({{ name }})</v-list-item-title>
+          <v-list-item-subtitle class="text-caption font-weight-light secondary--text text--lighten-3">
+            {{ departmentName }} ({{ gradeName }})
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </template>
+    </base-select>
+    <base-select
+      v-if="sectionKey"
+      :key="sectionKey"
       label="Section"
       rules="required"
       v-model="courseAssignment.section"
@@ -18,7 +55,6 @@
       :api-params="sectionApiParams"
       type="autocomplete"
       return-object
-      @change="courseAssignment.course = null"
     />
     <base-select
       label="Course"

@@ -7,7 +7,6 @@
     ]"
     :data-func="() => $api.department.find(apiParams)"
     :delete-func="id => $api.department.delete(id)"
-    no-data-icon="mdi-account-plus-outline"
     :api-params="apiParams"
   >
     <template #item_grade="{ item: { grade: { name } }, defaultStyle }">

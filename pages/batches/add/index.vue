@@ -12,13 +12,27 @@
     <base-select
       label="Department"
       rules="required"
-      v-model="batch.department.id"
+      v-model="batch.department"
       item-value="id"
       item-text="name"
       :data-func="() => $api.department.find(departmentApiParams)"
       :api-params="departmentApiParams"
       type="autocomplete"
-    />
+      :filter="departmentCustomFilter"
+      return-object
+    >
+      <template
+        v-for="slot in ['item', 'selection']"
+        #[slot]="{
+          item: {
+            name,
+            grade: { name: gradeName }
+          }
+        }"
+      >
+        {{ `${name} (${gradeName})` }}
+      </template>
+    </base-select>
   </save>
 </template>
 

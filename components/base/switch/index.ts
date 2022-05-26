@@ -1,5 +1,10 @@
 import { Component } from 'nuxt-property-decorator';
+import { ValidationProvider } from 'vee-validate';
 import BaseInput from '../input';
 
-@Component
+@Component({
+  components: {
+    ValidationProvider
+  }
+})
 export default class BaseSwitch extends BaseInput {}
