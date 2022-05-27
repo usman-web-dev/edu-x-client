@@ -8,7 +8,7 @@ class CourseAssignmentApi extends BaseApi {
   }
 
   findOne(id: number, params?: ApiParamsModel) {
-    return this._findOne('course-assignments', id, params);
+    return this._findOne<CourseAssignmentModel>('course-assignments', id, params);
   }
 
   create(courseAssignment: CourseAssignmentModel) {

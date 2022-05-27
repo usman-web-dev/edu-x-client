@@ -3,6 +3,7 @@ import { DepartmentModel } from '../department';
 import { RoleModel } from './role.model';
 
 export class UserModel extends BaseModel {
+  id!: number;
   username = '';
   email = '';
   createdAt!: Date;

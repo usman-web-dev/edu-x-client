@@ -1,6 +1,6 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import { ApiParamsModel } from '~/api';
-import { OverrideListingAction, RoleType } from '~/utils';
+import { ListingAction, OverrideListingAction, RoleType } from '~/utils';
 
 @Component
 export default class CourseAssignmentsView extends Vue {
@@ -33,6 +33,21 @@ export default class CourseAssignmentsView extends Vue {
     filters: this.filters
   });
 
+  actions: Array<ListingAction> = [
+    {
+      name: 'add-attendance',
+      color: 'secondary',
+      icon: 'mdi-calendar-cursor',
+      text: 'Add Attendance'
+    },
+    {
+      name: 'view-attendances',
+      color: 'primary',
+      icon: 'mdi-calendar-check-outline',
+      text: 'View Attendances'
+    }
+  ];
+
   overrideActions(): Array<OverrideListingAction> {
     return [
       {
@@ -42,7 +57,8 @@ export default class CourseAssignmentsView extends Vue {
       {
         name: 'delete',
         roles: [RoleType.ADMIN]
-      }
+      },
+      ...this.actions
     ];
   }
 }

@@ -108,8 +108,12 @@ export class Helpers {
     return true;
   }
 
-  formatDate(date: Date | string) {
-    return format(new Date(date), 'do MMM, yyyy');
+  formatDate(date: Date | string, dateFormat?: string) {
+    return format(new Date(date), dateFormat ?? 'do MMM, yyyy');
+  }
+
+  formatTime(date: string, time: string) {
+    return this.formatDate(`${date}T${time}`, 'h:mm a');
   }
 
   getUserTypeFromNumber(type: RoleType, plural = false): string {

@@ -1,6 +1,6 @@
 <template>
-  <v-app-bar color="transparent" app flat>
-    <v-app-bar-nav-icon color="primary" @click="drawerSrv.mode = !drawerSrv.mode" />
+  <v-app-bar color="transparent" :absolute="!$helpers.isAdmin()" :app="$helpers.isAdmin()" flat>
+    <v-app-bar-nav-icon color="primary" @click="drawerSrv.mode = !drawerSrv.mode" v-if="$helpers.isAdmin()" />
     <div class="d-flex justify-end width-100">
       <base-menu>
         <template #activator>

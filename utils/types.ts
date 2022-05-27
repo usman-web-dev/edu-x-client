@@ -40,6 +40,7 @@ export type ListingAction = {
   icon: string;
   color: string;
   text: string;
+  roles?: Array<RoleType>;
 };
 
 export type OverrideListingAction = ListingAction | ({ name: string } & ({ hide: true } | { roles: Array<RoleType> }));

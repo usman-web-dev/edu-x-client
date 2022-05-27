@@ -1,5 +1,5 @@
 <template>
-  <validation-provider :rules="rules" v-slot="{ errors }">
+  <validation-provider :rules="rules" v-slot="{ errors }" slim>
     <v-switch
       class="ma-0 pa-0"
       :error-messages="errors"
