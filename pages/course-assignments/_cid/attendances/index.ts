@@ -36,7 +36,7 @@ export default class AttendancesView extends Vue {
     return [
       {
         name: 'edit',
-        roles: [RoleType.ADMIN, RoleType.TEACHER]
+        hide: true
       },
       {
         name: 'delete',
