@@ -23,7 +23,7 @@
             Get started by creating a new {{ listingTitle.toLowerCase() }}
           </span>
 
-          <base-btn depressed :to="{ name: `${$route.name}-add` }" v-if="add">
+          <base-btn depressed :to="{ name: `${$route.name}-add`, params: saveParams }" v-if="add">
             <v-icon class="mr-2">mdi-plus</v-icon>
             Add New
           </base-btn>
@@ -70,7 +70,12 @@
         </span>
       </span>
 
-      <base-pagination class="ml-auto" :pagination="apiParams.pagination" @update-page="updatePage" />
+      <base-pagination
+        class="ml-auto"
+        :pagination="apiParams.pagination"
+        @update-page="updatePage"
+        v-if="apiParams.pagination.pageCount > 1"
+      />
     </div>
   </div>
 </template>

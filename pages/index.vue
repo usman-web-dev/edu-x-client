@@ -17,13 +17,10 @@
           </v-toolbar>
           <v-row justify="center" align="center" style="height: 40em">
             <v-col cols="12" md="6" class="text-center text-md-left">
-              <h2 class="font-weight-light mb-5">
-                Education Management,
-                <br />in one place
-              </h2>
-              <p>
-                Education is that whole system of human training within and without the school house walls, which molds
-                and develops men.
+              <h2 class="font-weight-light mb-1">Education Management in one place</h2>
+              <p class="grey--text text--lighten-1">
+                A less time-consuming and revolutionary way for education that is the heart of education for future and
+                is committed to excellence
               </p>
               <base-btn
                 large

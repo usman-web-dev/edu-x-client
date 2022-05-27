@@ -11,8 +11,10 @@
     :delete-func="id => $api.courseAssignment.delete(id)"
     no-data-icon="mdi-folder-plus-outline"
     :api-params="apiParams"
+    :actions="actions"
     :override-actions="overrideActions"
     :add="$helpers.isAdmin()"
+    @view-attendances="$router.push({ name: 'course-assignments-cid-attendances', params: { cid: $event.id } })"
   >
     <template
       #item_class="{

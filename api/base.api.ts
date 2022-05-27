@@ -58,8 +58,8 @@ export abstract class BaseApi {
     return this.mergeData(data) as T;
   }
 
-  protected _create<T, E = T>(entity: string, data: T) {
-    return this.$strapi.create<E>(entity, { data } as any);
+  protected async _create<T, E = T>(entity: string, data: T) {
+    return this.mergeData(await this.$strapi.create<E>(entity, { data } as any));
   }
 
   protected _update<T, E = T>(entity: string, id: number, data: T) {
