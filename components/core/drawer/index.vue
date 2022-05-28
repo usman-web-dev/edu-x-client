@@ -22,24 +22,16 @@
     </v-list-item>
 
     <v-list dense>
-      <template v-for="item in drawerSrv.links">
-        <template v-if="!item.roles || item.roles.some(role => $helpers.hasRole(role))">
-          <core-drawer-link :item="item" :key="`item-${item.title}`" v-if="!item.children" />
+      <template v-for="item in links">
+        <core-drawer-link :item="item" :key="`item-${item.title}`" v-if="!item.children" />
 
-          <v-list-group :key="`group-${item.title}`" color="white" :value="isGroupActive(item)" v-else>
-            <template #activator>
-              <core-drawer-link :item="item" content-class="pl-0" />
-            </template>
+        <v-list-group :key="`group-${item.title}`" color="white" :value="isGroupActive(item)" v-else>
+          <template #activator>
+            <core-drawer-link :item="item" content-class="pl-0" />
+          </template>
 
-            <template v-for="child in item.children">
-              <core-drawer-link
-                :item="child"
-                :key="`child-${child.title}`"
-                v-if="!child.roles || child.roles.some(role => $helpers.hasRole(role))"
-              />
-            </template>
-          </v-list-group>
-        </template>
+          <core-drawer-link v-for="child in item.children" :item="child" :key="`child-${child.title}`" />
+        </v-list-group>
       </template>
     </v-list>
   </v-navigation-drawer>
