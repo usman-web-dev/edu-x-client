@@ -1,6 +1,6 @@
 import { init, send } from '@emailjs/browser';
 import { Component, Vue } from 'nuxt-property-decorator';
-import { AnyObject } from '~/utils';
+import { AnyObject, InstituteType } from '~/utils';
 
 @Component({
   layout: 'guest'
@@ -29,11 +29,16 @@ export default class HomeView extends Vue {
       name: '',
       instituteName: '',
       subject: '',
-      message: ''
+      message: '',
+      instituteType: null
     };
   }
 
   loading = false;
+
+  get instituteTypes() {
+    return Object.values(InstituteType).map(t => this.$helpers.titleize(t));
+  }
 
   created() {
     this.initContactData();
@@ -42,7 +47,7 @@ export default class HomeView extends Vue {
 
   async sendMessage() {
     this.loading = true;
-    const { email, name, subject, instituteName, message } = this.contactData;
+    const { email, name, subject, instituteName, message, instituteType } = this.contactData;
 
     try {
       await send('service_rgio01t', 'template_bivi14a', {
@@ -50,7 +55,8 @@ export default class HomeView extends Vue {
         name,
         subject,
         instituteName,
-        message
+        message,
+        instituteType
       });
 
       this.$alert.show('Email sent! Please wait for us to contact at your given email.', 'success', true, 10);

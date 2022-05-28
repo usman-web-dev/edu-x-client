@@ -13,7 +13,7 @@
     :api-params="apiParams"
     :actions="actions"
     :override-actions="overrideActions"
-    :add="$helpers.isAdmin()"
+    :add="$helpers.isAdmin"
     @view-attendances="$router.push({ name: 'course-assignments-cid-attendances', params: { cid: $event.id } })"
   >
     <template

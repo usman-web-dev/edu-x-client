@@ -78,7 +78,7 @@
                       rules="required|email"
                     />
                   </v-col>
-                  <v-col cols="12">
+                  <v-col cols="12" md="6">
                     <base-text-field
                       label="Your Institute Name"
                       outlined
@@ -86,6 +86,17 @@
                       dense
                       v-model="contactData.instituteName"
                       rules="required|min:2"
+                    />
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <base-select
+                      label="Your Institute Type"
+                      outlined
+                      hide-details="auto"
+                      dense
+                      v-model="contactData.instituteType"
+                      rules="required"
+                      :items="instituteTypes"
                     />
                   </v-col>
                   <v-col cols="12">

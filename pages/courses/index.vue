@@ -3,6 +3,8 @@
     subtitle="All courses here"
     :headers="[
       { id: 'name', title: 'Name' },
+      { id: 'code', title: 'Code' },
+      ...($helpers.isUniversity ? [{ id: 'creditHours', title: 'Credit Hours' }] : []),
       { id: 'department', title: 'Department' },
       { id: 'grade', title: 'Grade' }
     ]"

@@ -1,8 +1,7 @@
 import { Middleware } from '@nuxt/types';
-import { RoleType } from '~/utils';
 
-const isStudent: Middleware = ({ $strapi, redirect }) => {
-  if ($strapi.user?.role !== RoleType.STUDENT) {
+const isStudent: Middleware = ({ $helpers, redirect }) => {
+  if (!$helpers.isStudent) {
     redirect('/dashboard');
   }
 };
