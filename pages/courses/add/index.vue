@@ -18,10 +18,29 @@
       :api-params="departmentApiParams"
       type="autocomplete"
       return-object
-    />
+      :filter="departmentCustomFilter"
+    >
+      <template
+        v-for="slot in ['item', 'selection']"
+        #[slot]="{
+          item: {
+            name,
+            grade: { name: gradeName }
+          }
+        }"
+      >
+        {{ `${name} (${gradeName})` }}
+      </template>
+    </base-select>
     <base-text-field label="Name" rules="required" v-model="course.name" />
     <base-text-field label="Code" rules="required|min:2" v-model="course.code" />
-    <base-text-field label="Credit Hours" rules="required|number" v-model.number="course.creditHours" type="number" />
+    <base-text-field
+      label="Credit Hours"
+      rules="required|number"
+      v-model.number="course.creditHours"
+      type="number"
+      v-if="$helpers.isUniversity"
+    />
   </save>
 </template>
 

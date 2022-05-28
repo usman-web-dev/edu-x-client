@@ -38,13 +38,15 @@ export default class CourseAssignmentsView extends Vue {
       name: 'add-attendance',
       color: 'secondary',
       icon: 'mdi-calendar-cursor',
-      text: 'Add Attendance'
+      text: 'Add Attendance',
+      roles: [RoleType.STUDENT, RoleType.TEACHER]
     },
     {
       name: 'view-attendances',
       color: 'primary',
       icon: 'mdi-calendar-check-outline',
-      text: 'View Attendances'
+      text: 'View Attendances',
+      roles: [RoleType.STUDENT, RoleType.TEACHER]
     }
   ];
 

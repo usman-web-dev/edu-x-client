@@ -13,7 +13,7 @@ export default class CoreDrawer extends Vue {
   get links(): Array<DrawerLink> {
     const links: Array<DrawerLink> = [{ title: 'Dashboard', icon: 'mdi-home-variant-outline', link: 'dashboard' }];
 
-    if (this.$helpers.isAdmin()) {
+    if (this.$helpers.isAdmin) {
       links.push(
         {
           title: 'Class Management',
@@ -88,11 +88,18 @@ export default class CoreDrawer extends Vue {
         }
       );
     } else {
-      links.push({
-        title: 'Courses',
-        icon: 'mdi-book-open-page-variant-outline',
-        link: 'course-assignments'
-      });
+      links.push(
+        {
+          title: 'Courses',
+          icon: 'mdi-book-open-page-variant-outline',
+          link: 'course-assignments'
+        },
+        {
+          title: 'Assessments',
+          icon: 'mdi-file-document-outline',
+          link: 'assessments'
+        }
+      );
     }
 
     return links;

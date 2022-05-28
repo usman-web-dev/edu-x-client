@@ -1,8 +1,7 @@
 import { Middleware } from '@nuxt/types';
-import { RoleType } from '~/utils';
 
-const isAdmin: Middleware = ({ $strapi, redirect }) => {
-  if ($strapi.user?.role?.id !== RoleType.ADMIN) {
+const isAdmin: Middleware = ({ $helpers, redirect }) => {
+  if (!$helpers.isAdmin) {
     redirect('/course-assignments');
   }
 };

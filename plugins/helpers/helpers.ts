@@ -1,7 +1,7 @@
 import { Context } from '@nuxt/types';
 import { format } from 'date-fns';
 import { ApiParamsModel, UserModel } from '~/api';
-import { AnyObject, Role, RoleType } from '~/utils';
+import { AnyObject, AssessmentType, InstituteType, Role, RoleType } from '~/utils';
 
 export class Helpers {
   $context!: Context;
@@ -134,16 +134,40 @@ export class Helpers {
     return user?.role?.id === role;
   }
 
-  isAdmin() {
+  get isAdmin() {
     return this.hasRole(RoleType.ADMIN);
   }
 
-  isTeacher() {
+  get isTeacher() {
     return this.hasRole(RoleType.TEACHER);
   }
 
-  isStudent() {
+  get isStudent() {
     return this.hasRole(RoleType.STUDENT);
+  }
+
+  instituteHasType(type: InstituteType) {
+    const { institute } = this.$context.$strapi.user as unknown as UserModel;
+
+    return institute.type === type;
+  }
+
+  get isSchool() {
+    return this.instituteHasType(InstituteType.SCHOOL);
+  }
+
+  get isUniversity() {
+    return this.instituteHasType(InstituteType.UNIVERSITY);
+  }
+
+  enumToItems<T extends object>(data: T) {
+    return Object.values(data).map(id => ({ id, value: this.titleize(id) }));
+  }
+
+  get getAssessmentTypes() {
+    return this.isSchool
+      ? [AssessmentType.HOMEWORK, AssessmentType.PAPER]
+      : [AssessmentType.ASSIGNMENT, AssessmentType.EXAM, AssessmentType.QUIZ];
   }
 }
 

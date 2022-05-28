@@ -10,3 +10,16 @@ export enum Role {
   TEACHER = 'teacher',
   STUDENT = 'student'
 }
+
+export enum InstituteType {
+  SCHOOL = 'school',
+  UNIVERSITY = 'university'
+}
+
+export enum AssessmentType {
+  HOMEWORK = 'homework',
+  PAPER = 'paper',
+  ASSIGNMENT = 'assignment',
+  EXAM = 'exam',
+  QUIZ = 'quiz'
+}
