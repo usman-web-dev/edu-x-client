@@ -7,7 +7,6 @@
 
 <script>
 export default {
-  middleware: ['isAdmin'],
   methods: {
     async logout() {
       await this.$strapi.logout();

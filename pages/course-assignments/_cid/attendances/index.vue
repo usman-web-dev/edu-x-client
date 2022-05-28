@@ -13,7 +13,7 @@
     :delete-func="id => $api.attendance.delete(id)"
     :api-params="apiParams"
     :override-actions="overrideActions"
-    :add="$helpers.isAdmin()"
+    :add="!$helpers.isStudent()"
     :save-params="$route.params"
   >
     <template #item_date="{ item: { date }, defaultStyle }">

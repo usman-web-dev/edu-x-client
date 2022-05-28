@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <lazy-alert />
-    <lazy-core-drawer v-if="$helpers.isAdmin()" />
+    <lazy-core-drawer />
     <lazy-core-app-bar />
     <lazy-confirm />
 

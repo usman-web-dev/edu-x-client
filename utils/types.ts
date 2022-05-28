@@ -51,5 +51,4 @@ export type DrawerLink = {
   link?: string;
   params?: Route['params'];
   children?: Array<DrawerLink>;
-  roles?: Array<RoleType>;
 };

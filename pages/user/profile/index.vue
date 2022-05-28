@@ -1,3 +1,11 @@
 <template>
-  <h1>Profile</h1>
+  <div />
 </template>
+
+<script>
+export default {
+  middleware: ({ redirect }) => {
+    redirect('/user/profile/personal');
+  }
+};
+</script>
