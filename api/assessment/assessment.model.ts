@@ -1,14 +1,14 @@
 import { AssessmentType } from '~/utils';
+import { AssessmentSubmissionModel } from '../assessment-submission';
 import { BaseModel } from '../base.model';
 import { CourseAssignmentModel } from '../course-assignment';
-import { AssessmentSubmissionModel } from './assessment-submission.model';
 
 export class AssessmentModel extends BaseModel {
-  start = new Date();
+  start: Date | null = new Date();
   deadline: Date | null = null;
-  course!: CourseAssignmentModel;
+  course: CourseAssignmentModel | null = null;
   submissions!: Array<AssessmentSubmissionModel>;
-  questionText = '';
+  questionDescription = '';
   totalMarks = 100;
   required = true;
   type: AssessmentType | null = null;

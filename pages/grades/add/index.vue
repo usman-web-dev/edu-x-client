@@ -3,7 +3,7 @@
     title="Grade"
     subtitle="Add a new grade here"
     :add-func="() => $api.grade.create(grade)"
-    :edit-func="id => $api.grade.update(id, grade)"
+    :update-func="id => $api.grade.update(id, grade)"
     @close="$router.push('/grades')"
     :edit-data-func="id => $api.grade.findOne(id)"
     @edit-data="grade = { ...grade, ...$event }"

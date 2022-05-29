@@ -37,15 +37,29 @@ export default class CourseAssignmentsView extends Vue {
     {
       name: 'add-attendance',
       color: 'secondary',
-      icon: 'mdi-calendar-cursor',
+      icon: 'mdi-calendar-plus',
       text: 'Add Attendance',
-      roles: [RoleType.STUDENT, RoleType.TEACHER]
+      roles: [RoleType.TEACHER]
     },
     {
       name: 'view-attendances',
       color: 'primary',
       icon: 'mdi-calendar-check-outline',
       text: 'View Attendances',
+      roles: [RoleType.STUDENT, RoleType.TEACHER]
+    },
+    {
+      name: 'add-assessment',
+      color: 'accent',
+      icon: 'mdi-text-box-plus-outline',
+      text: 'Add Assessment',
+      roles: [RoleType.TEACHER]
+    },
+    {
+      name: 'view-assessments',
+      color: 'primary',
+      icon: 'mdi-text-box-outline',
+      text: 'View Assessments',
       roles: [RoleType.STUDENT, RoleType.TEACHER]
     }
   ];
@@ -62,5 +76,12 @@ export default class CourseAssignmentsView extends Vue {
       },
       ...this.actions
     ];
+  }
+
+  handleAction(type: 'attendances' | 'assessments', subType: 'view' | 'add', cid: number) {
+    this.$router.push({
+      name: `course-assignments-cid-${type}${subType === 'add' ? '-add' : ''}`,
+      params: { cid: `${cid}` }
+    });
   }
 }

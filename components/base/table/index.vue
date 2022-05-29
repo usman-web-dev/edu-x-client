@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th
-            v-for="(header, idx) in headers"
+            v-for="(header, idx) in tableHeaders"
             :key="idx"
             class="px-5 py-3"
             :style="header.width ? `width: ${header.width}` : undefined"
@@ -27,12 +27,12 @@
       <tbody v-if="data.length && !loading">
         <tr v-for="(item, idx) in data" :key="idx">
           <td
-            v-for="(header, i) in headers"
+            v-for="(header, i) in tableHeaders"
             :key="header.id"
             class="px-5 py-4"
             :class="{
               'left-radius': idx === data.length - 1 && !i,
-              'right-radius': idx === data.length - 1 && i === headers.length - 1,
+              'right-radius': idx === data.length - 1 && i === tableHeaders.length - 1,
               'rounded-0': idx !== data.length - 1
             }"
           >
@@ -51,7 +51,7 @@
 
       <tfoot v-if="!data.length || loading">
         <tr>
-          <td v-if="loading" :colspan="headers.length">
+          <td v-if="loading" :colspan="tableHeaders.length">
             <v-skeleton-loader
               type="list-item"
               v-for="n in 3"
@@ -59,7 +59,7 @@
               :max-width="`${n === 1 ? 100 : n === 2 ? 50 : 75}%`"
             />
           </td>
-          <td v-else-if="!data.length" :colspan="headers.length" class="py-4 text-center">
+          <td v-else-if="!data.length" :colspan="tableHeaders.length" class="py-4 text-center">
             <span :class="defaultHeaderStyle" v-if="!$scopedSlots['no-data']">No data</span>
             <slot name="no-data" v-bind="{ defaultItemStyle, defaultHeaderStyle }" />
           </td>

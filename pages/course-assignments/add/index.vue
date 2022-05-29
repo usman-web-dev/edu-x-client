@@ -3,7 +3,7 @@
     title="Course Assignment"
     subtitle="Add a new course assignment here"
     :add-func="() => $api.courseAssignment.create(courseAssignment)"
-    :edit-func="id => $api.courseAssignment.update(id, courseAssignment)"
+    :update-func="id => $api.courseAssignment.update(id, courseAssignment)"
     @close="$router.push('/course-assignments')"
     :edit-data-func="id => $api.courseAssignment.findOne(id, editApiParams)"
     @edit-data="onEditData"

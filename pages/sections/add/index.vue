@@ -3,7 +3,7 @@
     title="Section"
     subtitle="Add a new section here"
     :add-func="() => $api.section.create(section)"
-    :edit-func="id => $api.section.update(id, section)"
+    :update-func="id => $api.section.update(id, section)"
     @close="$router.push('/sections')"
     :edit-data-func="id => $api.section.findOne(id, editApiParams)"
     @edit-data="section = { ...section, ...$event }"

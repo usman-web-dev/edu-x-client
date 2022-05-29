@@ -29,7 +29,10 @@ export default class AttendancesView extends Vue {
     return {};
   }
 
-  apiParams = new ApiParamsModel({ populate: ['attendanceStudents'], filters: this.filters });
+  apiParams = new ApiParamsModel({
+    populate: ['attendanceStudents'],
+    filters: { ...this.filters, courseAssignment: { id: { $eq: +this.$route.params.cid } } }
+  });
   courseAssignmentApiParams = new ApiParamsModel({ populate: ['course', 'section.class', 'students'] });
 
   overrideActions(): Array<OverrideListingAction> {
