@@ -11,6 +11,7 @@ import {
   courseAssignment,
   department,
   grade,
+  media,
   section,
   user
 } from '~/api';
@@ -28,7 +29,8 @@ const api = {
   courseAssignment,
   attendance,
   assessment,
-  assessmentSubmission
+  assessmentSubmission,
+  media
 };
 
 export type Api = typeof api;

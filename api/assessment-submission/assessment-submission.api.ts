@@ -4,11 +4,11 @@ import { AssessmentSubmissionModel } from './assessment-submission.model';
 
 class AssessmentSubmissionApi extends BaseApi {
   find(params: ApiParamsModel) {
-    return this._find('assessment-submissions', params);
+    return this._find<AssessmentSubmissionModel>('assessment-submissions', params);
   }
 
   findOne(id: number, params?: ApiParamsModel) {
-    return this._findOne('assessment-submissions', id, params);
+    return this._findOne<AssessmentSubmissionModel>('assessment-submissions', id, params);
   }
 
   create(assessment: AssessmentSubmissionModel) {

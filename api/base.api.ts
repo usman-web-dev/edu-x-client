@@ -7,7 +7,7 @@ export abstract class BaseApi {
   protected $strapi!: Strapi;
   protected $context!: Context;
 
-  private mergeData(data: AnyObject | Array<AnyObject>): any {
+  protected mergeData(data: AnyObject | Array<AnyObject>): any {
     if (Array.isArray(data)) {
       return data.map(item => this.mergeData(item));
     } else if ((data.id && data.attributes) || data.data) {
@@ -15,8 +15,12 @@ export abstract class BaseApi {
     }
 
     for (const key in data) {
-      if (typeof data[key] === 'object' && !!data[key]?.data) {
-        data[key] = this.mergeData(data[key].data);
+      if (typeof data[key] === 'object' && !!data[key] && 'data' in data[key]) {
+        data[key] = data[key]?.data
+          ? this.mergeData(data[key].data)
+          : key.endsWith('s') || key.endsWith('Media')
+          ? []
+          : {};
       }
     }
 
@@ -58,7 +62,7 @@ export abstract class BaseApi {
     return this.mergeData(data) as T;
   }
 
-  protected async _create<T, E = T>(entity: string, data: T) {
+  protected async _create<T, E = T>(entity: string, data: T): Promise<E> {
     return this.mergeData(await this.$strapi.create<E>(entity, { data } as any));
   }
 

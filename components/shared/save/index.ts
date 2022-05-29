@@ -31,6 +31,23 @@ export default class SaveComponent extends Vue {
   private readonly editDataFunc?: (id: number) => Promise<any>;
 
   @Prop({
+    default: false,
+    type: Boolean
+  })
+  private readonly customTitle!: boolean;
+
+  @Prop({
+    default: false,
+    type: Boolean
+  })
+  private readonly disableSave!: boolean;
+
+  @Prop({
+    type: String
+  })
+  private readonly saveTitle?: boolean;
+
+  @Prop({
     default: 'id',
     type: String
   })

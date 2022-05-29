@@ -34,7 +34,7 @@ export default class BaseTable extends Vue {
   }
 
   getData({ id, type }: TableHeader, item: AnyObject) {
-    if (item[id]) {
+    if (item[id] != null) {
       if (!type) {
         return item[id];
       } else if (type === 'date') {
