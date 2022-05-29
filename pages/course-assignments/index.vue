@@ -14,7 +14,10 @@
     :actions="actions"
     :override-actions="overrideActions"
     :add="$helpers.isAdmin"
-    @view-attendances="$router.push({ name: 'course-assignments-cid-attendances', params: { cid: $event.id } })"
+    @view-attendances="handleAction('attendances', 'view', $event.id)"
+    @add-attendance="handleAction('attendances', 'add', $event.id)"
+    @view-assessments="handleAction('assessments', 'view', $event.id)"
+    @add-assessment="handleAction('assessments', 'add', $event.id)"
   >
     <template
       #item_class="{

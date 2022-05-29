@@ -3,7 +3,7 @@
     title="Course"
     subtitle="Add a new course here"
     :add-func="() => $api.course.create(course)"
-    :edit-func="id => $api.course.update(id, course)"
+    :update-func="id => $api.course.update(id, course)"
     @close="$router.push('/courses')"
     :edit-data-func="id => $api.course.findOne(id, editApiParams)"
     @edit-data="course = { ...course, ...$event }"

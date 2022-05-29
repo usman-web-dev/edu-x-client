@@ -1,6 +1,7 @@
 import { Plugin } from '@nuxt/types';
 import {
   assessment,
+  assessmentSubmission,
   attendance,
   auth,
   BaseApi,
@@ -26,7 +27,8 @@ const api = {
   section,
   courseAssignment,
   attendance,
-  assessment
+  assessment,
+  assessmentSubmission
 };
 
 export type Api = typeof api;

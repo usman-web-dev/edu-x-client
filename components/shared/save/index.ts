@@ -23,7 +23,7 @@ export default class SaveComponent extends Vue {
   @Prop({
     type: Function
   })
-  private readonly editFunc?: (id: number) => Promise<any>;
+  private readonly updateFunc?: (id: number) => Promise<any>;
 
   @Prop({
     type: Function
@@ -51,12 +51,12 @@ export default class SaveComponent extends Vue {
   async save() {
     this.loading = true;
 
-    if (!this.editFunc && !this.addFunc) {
+    if (!this.updateFunc && !this.addFunc) {
       return;
     }
 
     try {
-      this.isEdit ? await this.editFunc?.(this.isEdit) : await this.addFunc?.();
+      this.isEdit ? await this.updateFunc?.(this.isEdit) : await this.addFunc?.();
       this.$alert.show('Record has been saved.');
       this.$emit('close');
     } catch {

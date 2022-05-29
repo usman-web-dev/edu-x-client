@@ -1,5 +1,5 @@
 import { Context } from '@nuxt/types';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { ApiParamsModel, UserModel } from '~/api';
 import { AnyObject, AssessmentType, InstituteType, Role, RoleType } from '~/utils';
 
@@ -108,8 +108,8 @@ export class Helpers {
     return true;
   }
 
-  formatDate(date: Date | string, dateFormat?: string) {
-    return format(new Date(date), dateFormat ?? 'do MMM, yyyy');
+  formatDate(date: Date | string, dateFormat?: string, withTime = false) {
+    return format(new Date(date), dateFormat ?? `do MMM, yyyy${withTime ? ' h:mm a' : ''}`);
   }
 
   formatTime(date: string, time: string) {
@@ -164,10 +164,20 @@ export class Helpers {
     return Object.values(data).map(id => ({ id, value: this.titleize(id) }));
   }
 
-  get getAssessmentTypes() {
-    return this.isSchool
-      ? [AssessmentType.HOMEWORK, AssessmentType.PAPER]
-      : [AssessmentType.ASSIGNMENT, AssessmentType.EXAM, AssessmentType.QUIZ];
+  get assessmentTypes() {
+    return this.enumToItems(
+      this.isSchool
+        ? [AssessmentType.HOMEWORK, AssessmentType.PAPER]
+        : [AssessmentType.ASSIGNMENT, AssessmentType.EXAM, AssessmentType.QUIZ]
+    );
+  }
+
+  getDate(date: Date | null, onlyTime = false) {
+    if (!date) {
+      return null;
+    }
+
+    return this.formatDate(parseISO(new Date(date).toISOString()), onlyTime ? 'HH:mm:ss' : 'yyyy-MM-dd');
   }
 }
 

@@ -3,7 +3,7 @@
     :title="title"
     :subtitle="subtitle"
     :add-func="() => $api.user.create(user)"
-    :edit-func="id => $api.user.update(id, user)"
+    :update-func="id => $api.user.update(id, user)"
     @close="$router.push({ name: 'users-role' })"
     :edit-data-func="id => $api.user.findOne(id)"
     @edit-data="user = { ...user, ...$event }"

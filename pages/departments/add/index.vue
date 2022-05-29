@@ -3,7 +3,7 @@
     title="Department"
     subtitle="Add a new department here"
     :add-func="() => $api.department.create(department)"
-    :edit-func="id => $api.department.update(id, department)"
+    :update-func="id => $api.department.update(id, department)"
     @close="$router.push('/departments')"
     :edit-data-func="id => $api.department.findOne(id, editApiParams)"
     @edit-data="department = { ...department, ...$event }"

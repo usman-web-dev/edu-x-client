@@ -11,6 +11,7 @@ export type TableHeader = {
   width?: string;
   dir?: 'left' | 'center' | 'right';
   type?: 'date';
+  roles?: Array<RoleType>;
 };
 
 export type Pagination = {

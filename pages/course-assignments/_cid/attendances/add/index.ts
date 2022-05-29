@@ -25,9 +25,6 @@ export default class AttendancesAddView extends Vue {
   get isAll() {
     return this.presents === this.attendance.courseAssignment?.students.length;
   }
-  get IsSome() {
-    return this.presents > 0 && !this.isAll;
-  }
 
   handleAttendanceStudents(present = false) {
     this.attendance.attendanceStudents =

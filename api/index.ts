@@ -1,4 +1,5 @@
 export * from './assessment';
+export * from './assessment-submission';
 export * from './attendance';
 export * from './auth';
 export * from './base.api';

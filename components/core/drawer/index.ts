@@ -88,18 +88,11 @@ export default class CoreDrawer extends Vue {
         }
       );
     } else {
-      links.push(
-        {
-          title: 'Courses',
-          icon: 'mdi-book-open-page-variant-outline',
-          link: 'course-assignments'
-        },
-        {
-          title: 'Assessments',
-          icon: 'mdi-file-document-outline',
-          link: 'assessments'
-        }
-      );
+      links.push({
+        title: 'Courses',
+        icon: 'mdi-book-open-page-variant-outline',
+        link: 'course-assignments'
+      });
     }
 
     return links;
