@@ -12,6 +12,7 @@ import {
   department,
   grade,
   media,
+  notification,
   section,
   user
 } from '~/api';
@@ -30,7 +31,8 @@ const api = {
   attendance,
   assessment,
   assessmentSubmission,
-  media
+  media,
+  notification
 };
 
 export type Api = typeof api;

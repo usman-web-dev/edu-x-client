@@ -1,5 +1,5 @@
 import { extend } from 'vee-validate';
-import { confirmed, email, max, min, required } from 'vee-validate/dist/rules';
+import { between, confirmed, email, max, min, required } from 'vee-validate/dist/rules';
 
 extend('required', {
   ...required,
@@ -22,6 +22,11 @@ extend('email', {
 extend('true', {
   validate: value => value === true,
   message: 'This is required.'
+});
+
+extend('between', {
+  ...between,
+  message: 'This field must be bewteen {min} and {max}.'
 });
 
 extend('max', {

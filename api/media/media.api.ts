@@ -4,6 +4,10 @@ import { MediaModel } from './media.model';
 
 class MediaApi extends BaseApi {
   async upload(media: Array<MediaModel>, refId: number, ref: string, field: string): Promise<MediaModel> {
+    if (!media.filter(({ file }) => file).length) {
+      return [] as any;
+    }
+
     const formData = new FormData();
 
     formData.append('refId', `${refId}`);

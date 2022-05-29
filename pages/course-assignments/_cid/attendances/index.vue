@@ -15,7 +15,7 @@
     :override-actions="overrideActions"
     :add="!$helpers.isStudent"
     :save-params="$route.params"
-    :show-actions="false"
+    :show-actions="$helpers.isTeacher"
   >
     <template #item_date="{ item: { date }, defaultStyle }">
       <span :class="defaultStyle">{{ $helpers.formatDate(date) }}</span>

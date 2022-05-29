@@ -5,7 +5,10 @@ import { ListingAction, OverrideListingAction, RoleType } from '~/utils';
 @Component
 export default class AssessmentsView extends Vue {
   courseAssignment = new CourseAssignmentModel();
-  apiParams = new ApiParamsModel({ filters: { course: { id: { $eq: +this.$route.params.cid } } } });
+  apiParams = new ApiParamsModel({
+    filters: { course: { id: { $eq: +this.$route.params.cid } } },
+    populate: [this.$helpers.isStudent ? 'submissions' : '']
+  });
   courseAssignmentApiParams = new ApiParamsModel({ populate: ['course', 'section.class', 'students'] });
 
   get subtitle() {
