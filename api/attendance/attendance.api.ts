@@ -23,8 +23,22 @@ class AttendanceApi extends BaseApi {
     );
   }
 
-  update(id: number, attendance: AttendanceModel) {
-    return this._update<AttendanceModel>('attendances', id, attendance);
+  async update(id: number, { attendanceStudents, ...attendanceData }: AttendanceModel) {
+    await this._update('attendances', id, attendanceData);
+
+    const attendanceStudentsToCreate = attendanceStudents.filter(({ id }) => !id);
+    const attendanceStudentsToUpdate = attendanceStudents.filter(({ id }) => !!id);
+
+    attendanceStudentsToCreate.forEach(attendanceStudent => {
+      attendanceStudent.attendance = attendanceData as AttendanceModel;
+    });
+
+    return Promise.all([
+      ...attendanceStudentsToCreate.map(attendanceStudent => this._create('attendance-students', attendanceStudent)),
+      ...attendanceStudentsToUpdate.map(attendanceStudent =>
+        this._update('attendance-students', attendanceStudent.id, attendanceStudent)
+      )
+    ]);
   }
 
   delete(id: number) {

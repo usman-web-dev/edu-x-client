@@ -7,7 +7,7 @@ export class AssessmentSubmissionModel extends BaseModel {
   id!: number;
   assessment: AssessmentModel | null = null;
   student!: UserModel;
-  obtainedMarks = 0;
+  obtainedMarks: number | null = null;
   answers: Array<MediaModel> = [];
 
   constructor(data?: Partial<AssessmentSubmissionModel>) {

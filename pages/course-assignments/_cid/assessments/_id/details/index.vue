@@ -13,7 +13,7 @@
     :edit-data-func="editDataFunc"
     @edit-data="onEditData($event)"
     :edit-param="$route.params.subid ? 'subid' : 'id'"
-    :disable-save="(!isSubmission && countdown === 'Expired') || !submission.answers.length"
+    :disable-save="(!isSubmission && countdown === 'Expired') || !submission.answers.length || alreadyMarked"
     save-title="Save"
   >
     <v-row v-if="$helpers.isTeacher" class="mb-1">
@@ -22,7 +22,7 @@
           label="Obtained Marks"
           v-model.number="submission.obtainedMarks"
           type="number"
-          rules="required|number"
+          :rules="`required|number|between:0,${assessment.totalMarks}`"
         />
       </v-col>
     </v-row>
@@ -39,10 +39,16 @@
           {{ $helpers.formatDate(assessment.deadline || new Date(), undefined, true) }}
         </span>
       </span>
-      <span v-if="!isSubmission">
+      <span v-if="!isSubmission && !alreadyMarked">
         <span class="font-weight-bold">Countdown:</span>
         <span :class="`${timeLeft < 5 ? 'error--text' : 'secondary--text text--lighten-4'}`">
           {{ countdown }}
+        </span>
+      </span>
+      <span v-if="alreadyMarked">
+        <span class="font-weight-bold">Marks:</span>
+        <span class="secondary--text text--lighten-4">
+          {{ submission.obtainedMarks }} / {{ assessment.totalMarks }}
         </span>
       </span>
       <span v-if="$helpers.isTeacher">
@@ -63,7 +69,7 @@
     </template>
 
     <h2 class="mt-7 secondary--text">File Submission:</h2>
-    <media-upload v-model="submission.answers" :readonly="!!isSubmission" />
+    <media-upload v-model="submission.answers" :readonly="!!isSubmission || alreadyMarked" />
   </save>
 </template>
 

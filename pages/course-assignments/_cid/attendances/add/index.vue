@@ -5,8 +5,12 @@
     :add-func="() => $api.attendance.create(attendance)"
     :update-func="id => $api.attendance.update(id, attendance)"
     @close="$router.push({ name: 'course-assignments-cid-attendances', params: { cid: $route.params.cid } })"
-    :edit-data-func="id => $api.attendance.findOne(id)"
-    @edit-data="attendance = { ...attendance, ...$event }"
+    :edit-data-func="id => $api.attendance.findOne(id, editApiParams)"
+    @edit-data="
+      attendance = { ...attendance, ...$event };
+      tempAttendanceStudents = $event.attendanceStudents;
+      handleAttendanceStudents();
+    "
   >
     <base-date-picker label="Date" rules="required" v-model="attendance.date" :max="$helpers.getDate(new Date())" />
     <base-time-picker

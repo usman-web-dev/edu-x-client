@@ -2,7 +2,13 @@ import * as dateFns from 'date-fns';
 import { Component, Vue } from 'nuxt-property-decorator';
 import { ApiParamsModel, AssessmentModel, AssessmentSubmissionModel } from '~/api';
 
-@Component
+@Component({
+  middleware({ error, params: { subid }, $helpers }) {
+    if ((!subid && $helpers.isTeacher) || (subid && $helpers.isStudent)) {
+      error({ statusCode: 404 });
+    }
+  }
+})
 export default class AssessmentDetailsView extends Vue {
   submission = new AssessmentSubmissionModel();
 
@@ -12,6 +18,10 @@ export default class AssessmentDetailsView extends Vue {
 
   get isSubmission() {
     return this.$route.params.subid;
+  }
+
+  get alreadyMarked() {
+    return this.submission.obtainedMarks != null && !this.$helpers.isTeacher;
   }
 
   apiParams = new ApiParamsModel({
