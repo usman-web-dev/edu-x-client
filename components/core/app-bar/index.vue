@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="transparent" app flat>
+  <v-app-bar color="gray" app elevate-on-scroll class="shadow">
     <v-app-bar-nav-icon color="primary" @click="drawerSrv.mode = !drawerSrv.mode" />
     <div class="d-flex justify-end width-100">
       <base-menu>

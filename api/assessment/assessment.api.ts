@@ -8,7 +8,7 @@ class AssessmentApi extends BaseApi {
   }
 
   findOne(id: number, params?: ApiParamsModel) {
-    return this._findOne('assessments', id, params);
+    return this._findOne<AssessmentModel>('assessments', id, params);
   }
 
   create(assessment: AssessmentModel) {

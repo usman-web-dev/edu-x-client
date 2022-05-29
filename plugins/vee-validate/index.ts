@@ -6,6 +6,14 @@ extend('required', {
   message: 'This field is required.'
 });
 
+extend('required-array', {
+  validate: (value: Array<unknown>) => {
+    console.log('sadsadam', value, value.length, typeof value);
+    return !!value.length;
+  },
+  message: 'This field is required.'
+});
+
 extend('email', {
   ...email,
   message: 'Email must be valid.'

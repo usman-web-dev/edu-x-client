@@ -6,7 +6,7 @@
     <lazy-confirm />
 
     <v-main>
-      <v-container class="height-100 px-4" fluid>
+      <v-container class="height-100 px-4 pb-6" fluid>
         <nuxt />
       </v-container>
 

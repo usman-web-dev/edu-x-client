@@ -11,6 +11,7 @@ export * from './course-assignment';
 export * from './department';
 export * from './grade';
 export * from './institute';
+export * from './media';
 export * from './section';
 export * from './shared';
 export * from './user';

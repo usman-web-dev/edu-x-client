@@ -2,11 +2,11 @@
   <save
     title="Assessment"
     :subtitle="subtitle"
-    :add-func="() => $api.assessment.create(assessment)"
-    :update-func="id => $api.assessment.update(id, assessment)"
+    :add-func="addFunc"
+    :update-func="updateFunc"
     @close="$router.push({ name: 'course-assignments-cid-assessments', params: { cid: $route.params.cid } })"
-    :edit-data-func="id => $api.assessment.findOne(id)"
-    @edit-data="assessment = { ...assessment, ...$event }"
+    :edit-data-func="id => $api.assessment.findOne(id, editApiParams)"
+    @edit-data="onEditData"
   >
     <v-row>
       <v-col cols="12" md="6">
@@ -67,6 +67,11 @@
 
       <v-col cols="12" md="6" class="d-flex align-end">
         <base-switch label="Required to submit" v-model="assessment.required" />
+      </v-col>
+
+      <v-col cols="12">
+        <h2 class="mt-7 secondary--text">File Submission:</h2>
+        <media-upload v-model="assessment.questionMedia" />
       </v-col>
     </v-row>
   </save>

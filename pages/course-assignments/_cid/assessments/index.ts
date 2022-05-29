@@ -13,7 +13,22 @@ export default class AssessmentsView extends Vue {
     return `All assessments for ${course?.name ?? ''} (${section?.class?.name ?? ''}/${section?.name ?? ''})`;
   }
 
-  actions: Array<ListingAction> = [];
+  actions: Array<ListingAction> = [
+    {
+      name: 'view-details',
+      color: 'primary',
+      icon: 'mdi-text-box-search-outline',
+      text: 'View Details',
+      roles: [RoleType.STUDENT]
+    },
+    {
+      name: 'view-submissions',
+      color: 'primary',
+      icon: 'mdi-text-box-multiple-outline',
+      text: 'View Submissions',
+      roles: [RoleType.TEACHER]
+    }
+  ];
 
   overrideActions(): Array<OverrideListingAction> {
     return [
@@ -34,5 +49,12 @@ export default class AssessmentsView extends Vue {
       +this.$route.params.cid,
       this.courseAssignmentApiParams
     );
+  }
+
+  handleAction(type: 'details' | 'submissions', id: number) {
+    this.$router.push({
+      name: `course-assignments-cid-assessments-id-${type}`,
+      params: { ...this.$route.params, id: `${id}` }
+    });
   }
 }

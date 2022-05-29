@@ -16,6 +16,8 @@
     :actions="actions"
     :overrideActions="overrideActions"
     :save-params="$route.params"
+    @view-details="handleAction('details', $event.id)"
+    @view-submissions="handleAction('submissions', $event.id)"
   />
 </template>
 

@@ -6,8 +6,8 @@
       { id: 'date', title: 'Date' },
       { id: 'fromTime', title: 'From' },
       { id: 'toTime', title: 'To' },
-      { id: 'totalStudents', title: 'Total Students' },
-      { id: 'presentAbsent', title: 'Present/Absent' }
+      { id: 'totalStudents', title: 'Total Students', roles: [3] },
+      { id: 'presentAbsent', title: 'Present/Absent', roles: [3] }
     ]"
     :data-func="() => $api.attendance.find(apiParams)"
     :delete-func="id => $api.attendance.delete(id)"
@@ -15,6 +15,7 @@
     :override-actions="overrideActions"
     :add="!$helpers.isStudent"
     :save-params="$route.params"
+    :show-actions="false"
   >
     <template #item_date="{ item: { date }, defaultStyle }">
       <span :class="defaultStyle">{{ $helpers.formatDate(date) }}</span>
