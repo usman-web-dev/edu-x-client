@@ -5,6 +5,7 @@ export * from './auth';
 export * from './base.api';
 export * from './base.model';
 export * from './batch';
+export * from './chat';
 export * from './class';
 export * from './course';
 export * from './course-assignment';
