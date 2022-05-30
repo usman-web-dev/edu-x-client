@@ -108,13 +108,22 @@ const config: NuxtConfig = {
 
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
 
-  modules: ['@nuxtjs/strapi'],
+  modules: ['@nuxtjs/strapi', 'nuxt-socket-io'],
 
   strapi: {
     url: 'http://localhost:1337/api',
     cookie: {
       path: '/'
     }
+  },
+
+  io: {
+    sockets: [
+      {
+        name: 'main',
+        url: 'http://localhost:1337'
+      }
+    ]
   },
 
   vuetify: {
