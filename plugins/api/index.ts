@@ -6,6 +6,8 @@ import {
   auth,
   BaseApi,
   batch,
+  chat,
+  chatRoom,
   classApi,
   course,
   courseAssignment,
@@ -32,7 +34,9 @@ const api = {
   assessment,
   assessmentSubmission,
   media,
-  notification
+  notification,
+  chat,
+  chatRoom
 };
 
 export type Api = typeof api;
