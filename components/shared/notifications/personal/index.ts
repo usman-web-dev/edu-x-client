@@ -18,4 +18,13 @@ export default class NotificationsComponent extends Vue {
     const { data } = await this.$api.notification.find(this.apiParams);
     this.notifications = data;
   }
+
+  created() {
+    this.$nuxtSocket({ extraHeaders: { authorization: `Bearer ${this.$strapi.getToken()}` } }).on(
+      'notification',
+      notification => {
+        this.notifications = [notification, ...this.notifications];
+      }
+    );
+  }
 }
