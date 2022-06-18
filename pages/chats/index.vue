@@ -1,5 +1,5 @@
 <template>
-  <base-card>
+  <base-card :loading="$fetchState.pending">
     <v-row>
       <v-col cols="12" md="2">
         <v-list dense nav>
