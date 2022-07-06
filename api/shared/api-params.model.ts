@@ -11,6 +11,7 @@ export class ApiParamsModel<T extends BaseModel = BaseModel> extends BaseModel {
   };
 
   filters: AnyObject = {};
+  sort: Array<string> = [];
   populate: Array<string> | '*' = [];
 
   get firstItem() {

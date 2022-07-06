@@ -4,6 +4,7 @@ import { SectionModel } from '../section';
 import { UserModel } from '../user';
 
 export class CourseAssignmentModel extends BaseModel {
+  id!: number;
   section: SectionModel | null = null;
   course: CourseModel | null = null;
   teacher: UserModel | null = null;

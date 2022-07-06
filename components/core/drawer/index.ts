@@ -95,9 +95,9 @@ export default class CoreDrawer extends Vue {
           link: 'course-assignments'
         },
         {
-          title: 'Chats',
-          icon: 'mdi-message-text',
-          link: 'chats'
+          title: 'Calendar',
+          icon: 'mdi-calendar-month-outline',
+          link: 'calendar'
         }
       );
     }

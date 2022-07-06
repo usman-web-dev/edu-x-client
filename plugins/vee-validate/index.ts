@@ -48,3 +48,11 @@ extend('number', {
   validate: (value: string) => +value > 0,
   message: 'This field must be a number!'
 });
+
+extend('url', {
+  validate: (value: string) =>
+    /^(http[s]?:\/\/(www\.)?|ftp:\/\/(www\.)?|www\.){1}([0-9A-Za-z-\.@:%_\+~#=]+)+((\.[a-zA-Z]{2,3})+)(\/(.)*)?(\?(.)*)?/g.test(
+      value
+    ),
+  message: 'This field must be a URL!'
+});

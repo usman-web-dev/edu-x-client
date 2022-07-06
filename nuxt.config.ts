@@ -83,6 +83,11 @@ const config: NuxtConfig = {
             component: resolve(__dirname, 'pages/course-assignments/_cid/assessments/_id/details/index.vue')
           },
           {
+            name: 'course-assignments-cid-meetings-id-edit',
+            path: '/course-assignments/:cid/meetings/:id/edit',
+            component: resolve(__dirname, 'pages/course-assignments/_cid/meetings/add/index.vue')
+          },
+          {
             name: 'users-role-id-edit',
             path: '/users/:role/:id/edit',
             component: resolve(__dirname, 'pages/users/_role/add/index.vue')
@@ -150,7 +155,7 @@ const config: NuxtConfig = {
   },
 
   build: {
-    transpile: ['vee-validate/dist/rules']
+    transpile: ['vee-validate/dist/rules', /@fullcalendar.*/]
   }
 };
 

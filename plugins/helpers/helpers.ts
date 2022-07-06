@@ -33,12 +33,13 @@ export class Helpers {
   serializeQuery(params: AnyObject, prefix = '') {
     const query: Array<string> = Object.keys(params).map(key => {
       const value = params[key as keyof ApiParamsModel];
+      if (typeof params === 'object') {
+        key = prefix ? `${prefix}[${key}]` : key;
+      }
 
-      if (params.constructor === Array) key = `${prefix}[]`;
-      else if (params.constructor === Object) key = prefix ? `${prefix}[${key}]` : key;
-
-      if (typeof value === 'object') return this.serializeQuery(value, key);
-      else return `${key}=${encodeURIComponent(value)}`;
+      if (typeof value === 'object') {
+        return this.serializeQuery(value, key);
+      } else return `${key}=${encodeURIComponent(value)}`;
     });
 
     return ([] as Array<string>).concat.apply([], query).join('&');
