@@ -13,6 +13,7 @@ export * from './department';
 export * from './grade';
 export * from './institute';
 export * from './media';
+export * from './meeting';
 export * from './notification';
 export * from './section';
 export * from './shared';

@@ -18,6 +18,7 @@
     @add-attendance="handleAction('attendances', 'add', $event.id)"
     @view-assessments="handleAction('assessments', 'view', $event.id)"
     @add-assessment="handleAction('assessments', 'add', $event.id)"
+    @add-meeting="handleAction('meetings', 'add', $event.id)"
   >
     <template
       #item_class="{

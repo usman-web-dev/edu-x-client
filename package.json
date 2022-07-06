@@ -13,6 +13,12 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
+    "@fullcalendar/core": "^5.11.0",
+    "@fullcalendar/daygrid": "^5.11.0",
+    "@fullcalendar/interaction": "^5.11.0",
+    "@fullcalendar/list": "^5.11.0",
+    "@fullcalendar/timegrid": "^5.11.0",
+    "@fullcalendar/vue": "^5.11.0",
     "@nuxtjs/strapi": "^0.3.1",
     "class-transformer": "^0.5.1",
     "core-js": "^3.19.3",

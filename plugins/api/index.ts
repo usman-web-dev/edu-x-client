@@ -14,6 +14,8 @@ import {
   department,
   grade,
   media,
+  meeting,
+  meetingDetail,
   notification,
   section,
   user
@@ -36,7 +38,9 @@ const api = {
   media,
   notification,
   chat,
-  chatRoom
+  chatRoom,
+  meeting,
+  meetingDetail
 };
 
 export type Api = typeof api;
