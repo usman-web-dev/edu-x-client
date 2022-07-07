@@ -69,7 +69,7 @@
     </template>
 
     <h2 class="mt-7 secondary--text">File Submission:</h2>
-    <media-upload v-model="submission.answers" :readonly="!!isSubmission || alreadyMarked" />
+    <media-upload v-model="submission.answers" :readonly="!!isSubmission || alreadyMarked || countdown === 'Expired'" />
   </save>
 </template>
 

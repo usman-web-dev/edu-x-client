@@ -58,7 +58,7 @@ export default class CalendarView extends Vue {
         extendedProps: { courseAssignmentId }
       }
     }) => {
-      this.$router.push({ name: 'course-assignments-cid-meetings-id-view', params: { cid: courseAssignmentId, id } });
+      this.$router.push({ name: 'course-assignments-cid-meetings-id-edit', params: { cid: courseAssignmentId, id } });
     },
     plugins: [InteractionPlugin, ListPlugin]
   };
@@ -69,7 +69,7 @@ export default class CalendarView extends Vue {
 
   get events(): EventSourceInput {
     const { primary, success, error } = this.$vuetify.theme.currentTheme;
-    return this.meetings.map(({ accepted, meeting, id }) => ({
+    return this.meetings.map(({ accepted, meeting }) => ({
       title: meeting?.title,
       color: (accepted != null ? (accepted ? success : error) : primary)?.toString(),
       start: meeting?.start!,

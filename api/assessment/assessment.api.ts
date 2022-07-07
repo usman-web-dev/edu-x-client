@@ -4,7 +4,7 @@ import { AssessmentModel } from './assessment.model';
 
 class AssessmentApi extends BaseApi {
   find(params: ApiParamsModel) {
-    return this._find('assessments', params);
+    return this._find<AssessmentModel>('assessments', params);
   }
 
   findOne(id: number, params?: ApiParamsModel) {

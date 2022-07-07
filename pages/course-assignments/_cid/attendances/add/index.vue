@@ -54,7 +54,7 @@
         <span :class="defaultStyle">{{ username }}</span>
       </template>
       <template #item_present="{ item }">
-        <base-switch v-model="item.present" hide-details />
+        <base-switch :value="item.present" @change="item.present = !!$event" hide-details />
       </template>
     </base-table>
   </save>
