@@ -161,7 +161,7 @@ export default class DashboardView extends Vue {
     const all = attendances
       .map(({ attendanceStudents }) => attendanceStudents)
       .flat()
-      .filter(({ student }) => student?.id === this.$strapi.user.id);
+      .filter(({ student }) => student?.id === this.$strapi.user?.id);
 
     if (!all.length) {
       return -1;
