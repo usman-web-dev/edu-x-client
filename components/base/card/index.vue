@@ -8,7 +8,7 @@
     <v-card-title v-if="$slots.title" :class="`justify-${titleIn}`">
       <slot name="title" />
     </v-card-title>
-    <v-card-text v-if="$slots.default">
+    <v-card-text v-if="$slots.default" class="fill-height">
       <slot />
     </v-card-text>
     <v-card-actions v-if="$slots.actions">

@@ -1,3 +1,5 @@
+import { AssessmentModel } from '../assessment';
+import { AttendanceModel } from '../attendance';
 import { BaseModel } from '../base.model';
 import { CourseModel } from '../course';
 import { SectionModel } from '../section';
@@ -9,6 +11,8 @@ export class CourseAssignmentModel extends BaseModel {
   course: CourseModel | null = null;
   teacher: UserModel | null = null;
   students: Array<UserModel> = [];
+  assessments!: Array<AssessmentModel>;
+  attendances!: Array<AttendanceModel>;
 
   constructor(data?: Partial<CourseAssignmentModel>) {
     super();

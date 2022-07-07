@@ -7,10 +7,7 @@ extend('required', {
 });
 
 extend('required-array', {
-  validate: (value: Array<unknown>) => {
-    console.log('sadsadam', value, value.length, typeof value);
-    return !!value.length;
-  },
+  validate: (value: Array<unknown>) => !!value.length,
   message: 'This field is required.'
 });
 

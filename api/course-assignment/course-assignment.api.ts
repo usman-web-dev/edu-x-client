@@ -4,7 +4,7 @@ import { CourseAssignmentModel } from './course-assignment.model';
 
 class CourseAssignmentApi extends BaseApi {
   find(params: ApiParamsModel) {
-    return this._find('course-assignments', params);
+    return this._find<CourseAssignmentModel>('course-assignments', params);
   }
 
   findOne(id: number, params?: ApiParamsModel) {
