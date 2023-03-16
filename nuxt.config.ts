@@ -116,7 +116,7 @@ const config: NuxtConfig = {
   modules: ['@nuxtjs/strapi', 'nuxt-socket-io'],
 
   strapi: {
-    url: 'http://localhost:1337/api',
+    url: 'https://edu-x.up.railway.app/api',
     cookie: {
       path: '/'
     }
@@ -126,7 +126,7 @@ const config: NuxtConfig = {
     sockets: [
       {
         name: 'main',
-        url: 'http://localhost:1337'
+        url: 'https://edu-x.up.railway.app'
       }
     ]
   },
